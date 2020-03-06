@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lucyyang在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://lucyyang719.com/img/saberQ4.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Lucyyang" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <title>
+        
+        我的读书之旅｜Lucyyang&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://lucyyang719.com/2018/01/05/我的读书史/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Lucyyang
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/About/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://lucyyang719.com/img/banner.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      <!--$表示行内元素，$$表示块状元素 -->
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<!--加载MathJax的最新文件， async表示异步加载进来 -->
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>我的读书之旅</h1>
+                    
+                    <span class="meta">
+                         作者 Lucyyang
+                        <span>
+                          日期 2018-01-05
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#读书"
+                           title="读书">读书</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            我的读书之旅
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <blockquote>
+<p><strong>买书读书是最划算的自我投资，永远不要因为买书的花费  犹豫 ——Lucyyang's Mom</strong></p>
+</blockquote>
+<p>今天突然回想起自己从小到大的读书经历，觉得还是挺有意思的，可以说的也有很多，因此记录一下作为个人趣事。</p>
+<h1>起</h1>
+<p>因为姥姥姥爷都算是老一辈知识分子，而妈妈尤其热爱读书，因此在我很小的时候家里就藏书非常多了，可以说这样的家庭氛围给了我一个良好的开端。我小的时候觉得读书比看电视更有趣，因为有更多的想象空间可以给我发挥。</p>
+<p>尽管家中藏书很多，但是父母从未逼迫过我读书，主要是因为那些大部头对于年幼的我来说太过深奥，父母觉得我不可能读懂。但是因为父母经常不在家，我又不被允许跑出去玩，因此十分寂寞，把注意力转向了书籍。在我能追溯到的记忆中，我摸到的第一本书应该是三岁那年踮着脚，从柜子上取下的《西游记》。不幸的是，这本《西游记》并不适合幼儿读，不仅不是一本白话文读本，用语还非常靠近明清时的习惯。我看完第一页就花费了非常大的功夫，到了父母下班回家的时候，我就已经乖乖地把书放回了原处，从此就束之高阁了。</p>
+<p>第一次失败的读书经历并没有打击我幼小的心灵，反而令我更加好奇了。而得亏我妈买书从来都是大手笔，成箱地往家里搬，所以四五岁的我大约就已经有了一个书柜的书了。那些书主要都是名著画本，各种童话书，各种发行版本的《十万个为什么》，再深奥的一点就是各类历史书或者大部头的《百科全书》等等。我第一本读完的书是《三国演义》的儿童画本，记忆最深的要数桃园三结义、关公刮骨疗伤，以及这本书最后的结尾：天下大势，分久必合，合久必分。那个时候对于生死、情感、义气还没太多的认知，只是懵懵懂懂的觉得书中描述的世界真是让人令人沉重。</p>
+<p>可能是因为《三国演义》开了个好头，后面我对历史方面的书籍非常感兴趣，大约在7至9岁的时候，非常热衷于看各类历史书，包括上下五千年、中国通史、中国近代史、史记白话本、世界史......越早的历史我越是好奇，我也不记得我看了多少本历史书，也不记得自己还能记得多少内容。但是有一点让我挺骄傲：这些书都是写给成年人的，并没有针对儿童进行过多的删减和修改。对于这一时期的读书，我受益是非常大的，这一系列的历史书给了我很多对人类的认识，也让我对人类愈发感兴趣，在之后的生活过程中，看问题也更加宏观，增加了很多理解能力。许多事情发生了，我大脑里都会有个能参照的模板，觉得不会有什么奇怪，对于许多人，就感觉在哪本书中见过。不过那个时期我看历史书只是为了读故事（真实的故事总是那么吸引人），所以至今为止，历史在我脑中还是不连贯的，都是一个一个故事组成的。</p>
+<p>大约是把家中的历史书基本翻了个遍，到了十岁那年，我的兴趣又发生了一次重大转移，开始看起了金庸的武侠小说（依然感谢我妈买了金庸的全套书籍）。第一本是《射雕英雄传》，最开始是班上有个同学带了本漫画读本，看完第一册漫画我就嫌弃进度实在太慢了，回家直接翻出了金庸的原版。读这本书的时候可以说叫一个沉迷，完完全全沉浸在了金庸描绘的那个世界，我喜欢聪明伶俐的黄蓉，喜欢敦厚踏实的郭靖，喜欢无所不精的黄药师，喜欢老小孩周伯通，喜欢热衷美食的丐帮帮主......虽然读了金庸其他小说后，我觉得有几部都比《射雕英雄传》更壮阔、文笔更成熟，但是《射雕英雄传》依然是我最喜欢的一部，意义非凡。</p>
+<p>后面理所当然的在十岁那年把金庸的全部小说都读完了（不能确定是不是全部，总之家里有的肯定都读完了），后来我还因为知道了一个小男孩在9岁读完了金庸全部小说而申请了吉尼斯记录，而感到有一些懊悔233333金庸早期写的一些小说是都短篇的，而我看的顺序相反，所以读到后期，觉得水准没有之前看的长篇小说《天龙八部》、《笑傲江湖》、《倚天屠龙记》、《雪山飞狐》、《飞狐外传》、《神雕侠侣》、《鹿鼎记》等等等高了，因此后面兴趣也就消失了。</p>
+<p>谈到金庸的小说就不得不说情这一字，我最喜欢的一对CP倒不是各位熟知的那些，而是乔峰和阿朱。乔峰一直是我非常喜欢的男性人物，武功高强，义气十足，顶天立地，行事潇洒，哪怕阿朱死了阿紫死缠烂打的跟着他，他依然只爱阿朱一个。乔峰和阿朱的经历在书中描写不算太多，他们一起去寻找“大恶人”，阿朱虽然武功不济，却在易容方面颇有造诣，心思也细腻，乔峰虽然是武林翘楚，但是心思粗犷，不拘小节，因此两个人可以算是旗鼓相当，互相扶持走了一路。后来乔峰误以为阿朱的父亲是“大恶人”，一心要报仇（那个时候乔峰并不知道是阿朱父亲），阿朱夹在中间甚是两难，最后选择了易容成自己的父亲，被乔峰一掌打死了。乔峰知道事实后当然是悲痛欲绝，抱着快要死去的阿朱在雨夜绝望痛苦的景象深深扎根在了我的脑海。在后来很长一段时间，受这个影响，我觉得最好的死法就是死在爱人的怀中。</p>
+<p>后来我才知道金庸的许多小说都被拍成了电视剧，不过因为先读的书，许多人物形象我都已经有了自己内心的构想，所以电视剧就不是很想看了。按照惯例，我还是要摘抄一点喜欢的句子纪念一下咯~~</p>
+<blockquote>
+<p>白马带着她一步步的回到中原。白马已经老了，只能慢慢的走，但终是能回到中原的。江南有杨柳、桃花，有燕子、金鱼……汉人中有的是英
+俊勇武的少年，倜傥潇洒的少年……但这个美丽的姑娘就像古高昌国人那样固执：“那都是很好很好的，可是我偏偏不喜欢。(
+摘自《白马啸西风》)</p>
+</blockquote>
+<blockquote>
+<p>慧极必伤，情深不寿，强极则辱，谦谦君子，温润如玉。(摘自《书剑恩仇录》)</p>
+</blockquote>
+<blockquote>
+<p>“她有什么好，我哪里及不上她，你老是想着她，老是忘不了她？”</p>
+<p>“你样样都好，样样比她强。你只有一个缺点，你不是她……”。(摘自《天龙八部》乔峰与阿紫对话)</p>
+</blockquote>
+<h1>承</h1>
+<p>从六年级到初中这一阶段，读书口味又开始剧变，先是开始看起了日漫，包括柯南、哆啦A梦、网球王子、灌篮高手......而且关键是，那个时候我依然不喜欢看视频，所以所有的漫画我都是买的书，花费了大量金钱。为什么当时口味变化这么大呢，我觉得一是那段时期，我处于经常挨打的过程，而那些日漫给了很多温暖，所以比较沉迷；其次是这些书门槛比较低，可以无脑看，当时功课也算是繁忙，所以读书完全是为了放松了。这一日漫时期，最终被以我父母发现我居然花了这么多钱买了这么多“无用又无聊”的闲书而打了一顿告终。</p>
+<p>吃了教训后，我当然是学乖了，不再买实体书了，也不再看这些日漫了，而是转向了言情、网文、玄幻、科幻、魔法这类网络小说，这一时期倒是持续挺长，一直到了高二吧。当时也算是很沉迷了，看的这些书没有上千也有上百本吧（估计是上千了......gg），言情小说当然是大部分女生都逃不过的一道坎，大约是为了找自己的恋爱模板？我后期比较喜欢的言情文还是要数男女实力匹敌，女主聪明伶俐，男主温柔专一的类型，比如《君子一诺》，上了大学后还依然中二的以《君子一诺》中的女主为原型去指引自己。不过说句实话，最打动我的女主还是金庸和古龙中敏敏郡主、黄蓉、阿朱、任盈盈、孙小红等女性，比太多言情文中的小白兔丰满动人了。后来看了长篇系列小说《镜》，描写的是一个架空世界，男主用情至深，但是过程十分纠结，结局甚是惨痛，为此我悲伤了整整一周，对于言情小说的欲望就基本没有了，对于悲剧更是愈发拒绝。对于其他类型的玄幻科幻文，主要是喜欢看设定的各种世界观，在我小的时候，常常希望能设计出一个新的世界，但是感觉这个非常耗脑力，往往没想多少就困了（精神力不行啊，快来补蓝！）。</p>
+<h1>转</h1>
+<p>在初三到高二的时候，我开始迷上了诗词，一个是因为班上有两个共同兴趣爱好的男生，二是那个时候情绪敏感，诗歌更能触动我的心灵。我当时尤其喜欢《诗经》、宋词以及李白的诗，对于喜欢的诗会反复咀嚼直至能够背诵（当然一方面也是为了和那两个男生比一比23333）。除了中国诗以外，我还涉猎了点现代诗歌、莎士比亚的十四行诗、泰戈尔的《飞鸟集》、《吉檀迦利》和一些比较著名的国外名篇。喜欢《诗经》是因为对于上古的文化，我向来十分好奇与向往，常常想从中一窥上古时期人们的生活；喜欢李白的诗是因为他的豪气冲天，行侠仗义，读起来畅快淋漓；喜欢宋词是喜欢那一份婉转，喜欢那一份“天凉好个秋”的欲语还休（当然还有一个原因是这两个男生尤爱宋词咯）；喜欢泰戈尔的诗歌是因为读起来内心宁静，有一种睿智与豁达在其中（我有一段时间的理想就是成为像泰戈尔那样的人）。</p>
+<p>读到后来，那两个男生也开始纷纷按照宋词的格式去创作，我那个时候当然也不甘落后，试着写了自己的第一首词，并拿给了妈妈看，结果妈妈看了没忍住“噗嗤”一声笑了出来（而我所描绘的当然是悲伤的心境），我那个时候当然是觉得这是在嘲讽，于是恼羞成怒的把自己的处女词给撕掉了，之后再也未动过笔了，以至于后面两个男生写到兴头，怂恿我动笔，我都坚决不去尝试了。（唉，少女的玻璃心哟）</p>
+<p>挑了两首自己非常喜欢的诗经选篇和宋词摘抄如下。</p>
+<blockquote>
+<p>青青子衿，悠悠我心。
+纵我不往，子宁不嗣音？</p>
+<p>青青子佩，悠悠我思。
+纵我不往，子宁不来？</p>
+<p>挑兮达兮，在城阙兮。
+一日不见，如三月兮！</p>
+</blockquote>
+<p>注：这首《子衿》是我读的第一首诗经的诗，写的是一个翘首等待心爱的人回信的女子。“挑兮达（ta,四声）兮，在城阙兮”是描述女子在城墙垛上焦急踱步的样子，女子既心急又嗔怪恋人的模样十分可爱。</p>
+<blockquote>
+<p><strong>八声甘州</strong></p>
+<p>对潇潇暮雨洒江天，一番洗清秋。渐霜风凄紧，关河冷落，残照当楼。是处红衰翠减，苒苒物华休。惟有长江水，无语东流。</p>
+<p>不忍登高临远，望故乡渺邈，归思难收。叹年来踪迹，何事苦淹留。想佳人妆楼颙望，误几回、天际识归舟。争知我，倚栏杆处
+，正恁凝愁！</p>
+</blockquote>
+<p>注：描写的是柳永自己漂泊在外，仕途失意，怀才不遇，思念家乡的情景。也许越是沉重的情让人记得越深刻吧。</p>
+<p>如今这两个男生都已从北大毕业，而我变成了一个不再读诗的工科女。不管怎么样，我还是很怀念那个时候和他们一起读诗、讨论、争执的时光。</p>
+<p>高三一年准备高考、高考又考砸了，进了大学就很有紧迫感了，对自己要求也开始有了，读其他书的时间基本为0了，要是有人去查查我大一到大三的借书记录，估计只会觉得我是个学霸。还记得恋爱的时候，EX和我说我为什么从来不看其他书，只盯着学习竞赛，又不去交际，视野不会狭窄了点吗？如果他知道那只是旁人无法开解的一段历程，如果他知道我在过去也能算是同龄人中阅读量还可以的，如果他知道其实我本性很喜欢看书，如果他知道后来我又开始了读书之旅......会不会对我的看法有所改善呢？不过，起码也是因为这样的话，让我大四的时候看书动力更强了些吧。</p>
+<h1>合</h1>
+<p>保研后，当然是马上买了kindle，然后肆无忌惮的读各种杂书，像是饥渴已久的饿汉，进入自助餐厅饕餮一番，开始了吃饭读、坐车读、开会读......不得不说，kindle真是买的最值的物品了，并不是说看它看书体验有多好（我依然更喜欢看纸质书），而是对于想看的书，我第一时间就能找到电子版，立马就能上手读起来。因此那一年，看了各种不同领域的书籍，涉及到心理、理财、鸡汤、技能、人物传记、科普、恋爱、思维等等......而且我读书的速度算是比较快的，因此整个过程酣畅淋漓，不论到底学到了什么，起码读书的欲望得到了极大的满足。</p>
+<p>我记得大四上十月份去微软参加Ada workshop的时候，有幸和网络组的大boss Tomas聊天(十个女生一起，每人都可以畅所欲言)，我和他聊到非常high的时候，旁边的一个北大研究生妹子突然来了句“你看了好多书哇！”。当时我觉得很疑惑，怎么会有这个结论，我不过是引用了点别人的话，不是很常见的一些东西嘛？后来和朋友以及陌生人聊天的时候，确实也会有人常有这方面的感叹。但是我也知道，其实是因为工科的这个环境下，学生读闲书的时间和习惯基本没有，但是收到了这种评价依然还是很开心的~所以也更有动力去读书了。</p>
+<p>后来我在和某个同学交流的时候（他也非常喜欢看书，而且比我看的可都要深刻一些），他表示并不是很喜欢一些技巧或者成功学类的书，并且明确指出了《人性的弱点》这类书，完全就是为了掩饰自己的本性，不如真诚的表达自己。那个时候我还没有读过《人性的弱点》，但是却常常从我爸爸口中听到这本书。我爸并没有什么读书的习惯，但是他把《人性的弱点》看做是改变了他一生的最重要的一本书（《人性的弱点》主要写的是如何与人交际相处），我爸爸在29岁的时候处于比较迷茫的时期，后来他的一位贵人给了他一本《人性的弱点》，这本书就成了他为人处世的范本。我不好评价这本书，但是旁人评价我爸的行事与品性，没有一个不是觉得他有肚量又大气的，心胸宽广是他最大的特点。他告诉我，在走上职场之前，一定要仔细阅读这本书，这样可以减少很多不必要的纷争与烦恼。以我这样的急性子，对于这么神奇的书，当然是急不可耐的已经读过了，不过可惜的是，我觉得它有些说的挺对，但也没让我觉得像我爸说的那样厉害。我觉得是因为还没有到需要这本书的阶段，还是读的太早了。</p>
+<p>以上这段我是想说，其实没有什么没用的书，只是你暂时还没到需要这样的书的阶段，书与人也是有一个缘分的。我妈读书算是破万卷了，但是却没有哪一本书像《人性的弱点》对我爸那样影响她一生，我爸虽不怎么读书，但是读的这一本书却改变了他一生，读书真是一件奇妙的事情呀。那么我呢？我读书非常随意，经常东一榔头西一棒子，属于需求驱动型，需要什么了再读什么，读不下去也不强求自己，就连《如何阅读一本书》这样的经典，到如今都没有读下去orz，不过如果发生了什么事情，在需要的时候，我也知道应该去看什么书好对症下药。我现在读书的习惯是先在kindle上看，看到非常喜欢的或者重要的就会网购纸质版收藏（<s>其实是因为穷哇QAQ</s>）。这样随性的读书方式当然最大限度的提升了读书体验，但是现在觉得还是要有计划、有固定时间、按照系列地慢慢深入下去。</p>
+<p>呐，以上就是我的读书之旅咯，在这一生中我无法亲自体验和经历很多事情，一个人的经验与方法也着实有限，那么只能靠读书来尽量提升自己咯。另外呢，学以致用，读书读完了还得在实际中多运用与练习，这样才能消化嘛。我希望自己能一直读书、思考下去，也希望把这个习惯也带给身边的人和下一代哦~~</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/02/10/love/" data-toggle="tooltip" data-placement="top"
+                           title="LOVE">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/11/30/小纸条/" data-toggle="tooltip" data-placement="top"
+                           title="小纸条">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA0OS82NjEz">
+                    <script type="text/javascript">
+                       (function(d, s) {
+                           var j, e = d.getElementsByTagName(s)[0];
+
+                           if (typeof LivereTower === 'function') { return; }
+
+                           j = d.createElement(s);
+                           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                           j.async = true;
+
+                           e.parentNode.insertBefore(j, e);
+                       })(document, 'script');
+                    </script>
+                    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+<!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">起</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">合</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#读书"
+                           title="读书">读书</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="http://blog.nebula.moe/">nebula</a></li>
+                        
+                        <li><a href="http://chengpeng.space/">ChengPeng</a></li>
+                        
+                        <li><a href="https://ring0.me/">boj</a></li>
+                        
+                        <li><a href="https://sd-invol.github.io">轩</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                
+                <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+                
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Lucyyang 2020
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                   
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://lucyyang719.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-104173686-1';
+    var _gaDomain = 'lucyyang719.com';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '8d7d181e1a570aab168b4b03341e12d1';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://lucyyang719.com/img/saberQ2.jpg"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

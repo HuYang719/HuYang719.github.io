@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lucyyang在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://lucyyang719.com/img/saberQ4.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Lucyyang" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <title>
+        
+        钢琴练习中的慢｜Lucyyang&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://lucyyang719.com/2017/11/11/钢琴练习中的慢/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Lucyyang
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/About/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://lucyyang719.com/img/banner.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      <!--$表示行内元素，$$表示块状元素 -->
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<!--加载MathJax的最新文件， async表示异步加载进来 -->
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>钢琴练习中的慢</h1>
+                    
+                    <span class="meta">
+                         作者 Lucyyang
+                        <span>
+                          日期 2017-11-11
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#钢琴"
+                           title="钢琴">钢琴</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            钢琴练习中的慢
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>最近在练习英皇八级曲目中的一首赋格，赋格是一种音乐题材，多为2声部到4声部（同时存在多种旋律），我练习的这首赋格还是双主题，因此难度算是比较大的。在练习过程，不知怎的，仿佛周围所有的事物和人都在告诫我一定要慢下来，老师、知乎大V、书籍、讲座，随便瞟一眼，听一句，都在说“要慢”，因此练习的时候第一次努力尝试慢到极致，写下这篇文章记录下这一过程。</p>
+<p>最开始看到练琴要慢是从《指尖下的音乐》（作者：史兰倩丝卡）上看到的，这本书被尊为每一个人在练琴之前必读的书籍，。其中谈到初期练琴的时候，要以极慢极慢的速度练习到完整自如后，再按照节拍器上加“2”的间隔一点点前进。到了后期，无论已经对这个曲子多么熟练了，在每日开始练习的时间里，依然要以最慢的速度练起，一点点加到原速，而且绝不可以按照“5”的间隔加快，这样会使肌肉僵硬，失去控制力。受此启发，我练习《千本樱》的时候，也拿着节拍器从慢速一点点加速度，可惜我性子容易着急，到后面就放飞自我了，往往是一个晚上的练习时间速度就加了4、50orz，最后到了现在，华彩部分是怎么都弹不出原版的效果来了，速度也上不去，很明显就是前期的基础没有打好。反观她的一位学生（也是这本书的译者），花了一个学期的时间将规定的曲子从慢速加到中速，在第二个学期的时候，进步就飞快了。</p>
+<p>在练习赋格初期，老师也是要求我每一遍速度慢到极致，务必不能出错，眼睛盯着谱，大脑思考手的摆放位置，耳朵听着整个旋律的走向，整个过程要注意力高度集中。最开始的时候不用考虑节奏和情感变化，而是把每个音、每个下键、转位都练得清清楚楚明明白白。为此，我得提前做好一些准备：1、标出所有的指法；2、标出不同的旋律走向；3、标明手指转位，这样才能在练习的时候，让自己更专注于触觉与听觉。</p>
+<p>尽管以前也有练习更难的曲目，但我从来没有这么仔细的对待一首曲子。当我真正去运用这个方法，去仔细体会每一个音，试图让每一个音都饱满时，进步速度超出了我的想象，“首先要保证它是完全对的，然后就会像滚雪球一样，越滚越大，直到完成量到质的转变”。不过在发现进步很快后，我又有点躁了，速度又开始提升了，还是依然要屏着性子，扣住每一个细节。</p>
+<p>最后写一小段在《指尖上的音乐》上看到的故事，对我颇有震撼，也希望能激励读者实现自己的愿望。</p>
+<blockquote>
+<p>当我十一岁的时候，一天心血来潮地问拉赫玛尼诺夫：“哪一首钢琴曲在技巧上最艰难？”他想了几分钟后说：“我想李斯特的
+《鬼火练习曲》是最艰难乐曲中的一首。”“我想弹它。”“不行，你还无法做到，你的手太小了。”（插一句：史兰倩丝卡在成
+年后身高依然不到1.5m）听了他的话，我知道我一定得征服这个曲子才行。于是我开始着手练习，非常疯狂地练习。运用不正统的指法（因为手太小），将许多单手进行的乐句划分成两手弹奏，使用了非常多的不可思议的弹奏方式（种种都可能让莱谢
+蒂茨基死不安枕）来表现它。最后我终于奏出了这首艰难乐曲中所有的音符，我终于掌握了它。</p>
+<p>写这个故事的目的是想要点明：在钢琴的弹奏上，并没有完全无法克服的困难，所有的症结都只是在于你是否下定决心去克服它。世界上没有任何一个人，任何一本书，能够给予我们解决所有问题的答案。最能够解决困难的方法，就存在于你自己的头
+脑，你的内心，以及你的双手。</p>
+</blockquote>
+<p>共勉！</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/11/30/小纸条/" data-toggle="tooltip" data-placement="top"
+                           title="小纸条">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/08/08/在北航的这四年/" data-toggle="tooltip" data-placement="top"
+                           title="在北航的这四年">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA0OS82NjEz">
+                    <script type="text/javascript">
+                       (function(d, s) {
+                           var j, e = d.getElementsByTagName(s)[0];
+
+                           if (typeof LivereTower === 'function') { return; }
+
+                           j = d.createElement(s);
+                           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                           j.async = true;
+
+                           e.parentNode.insertBefore(j, e);
+                       })(document, 'script');
+                    </script>
+                    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+<!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#钢琴"
+                           title="钢琴">钢琴</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="http://blog.nebula.moe/">nebula</a></li>
+                        
+                        <li><a href="http://chengpeng.space/">ChengPeng</a></li>
+                        
+                        <li><a href="https://ring0.me/">boj</a></li>
+                        
+                        <li><a href="https://sd-invol.github.io">轩</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                
+                <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+                
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Lucyyang 2020
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                   
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://lucyyang719.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-104173686-1';
+    var _gaDomain = 'lucyyang719.com';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '8d7d181e1a570aab168b4b03341e12d1';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://lucyyang719.com/img/saberQ2.jpg"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

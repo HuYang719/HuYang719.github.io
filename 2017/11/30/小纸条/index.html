@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lucyyang在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://lucyyang719.com/img/saberQ4.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Lucyyang" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <title>
+        
+        小纸条｜Lucyyang&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://lucyyang719.com/2017/11/30/小纸条/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Lucyyang
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/About/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://lucyyang719.com/img/banner.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      <!--$表示行内元素，$$表示块状元素 -->
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<!--加载MathJax的最新文件， async表示异步加载进来 -->
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>小纸条</h1>
+                    
+                    <span class="meta">
+                         作者 Lucyyang
+                        <span>
+                          日期 2017-11-30
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#生活"
+                           title="生活">生活</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            小纸条
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <blockquote>
+<p><strong>Waiting for You.</strong></p>
+</blockquote>
+<p>微信上最近在流行小纸条，我也跟风玩了一把，至今收到了30+条，有三分之一都是在说我厉害大神啥的。。。。ε=(´ο｀*))* 我大约是明白自己为啥没男票了吧QAQ...... 不过还是有很多很有趣的小纸条的！收藏一下以后回顾！</p>
+<p><img src="https://d202nmktokw1pv.cloudfront.net/1.jpg" alt="1：http://oub7k42zb.bkt.clouddn.com/1.jpg"></p>
+<p>这个估计是个妹子吧，哈哈哈我也能称得上博学多才啊？打滚！
+<img src="https://s3-ap-southeast-1.amazonaws.com/lucyyang/2.jpg" alt="2：http://oub7k42zb.bkt.clouddn.com/2.jpg">
+这个是yt的啦，Lucyyang代表了什么呢？嘛，反正最近看到了一句话还是很喜欢的：随着年纪的增长，意志越发坚定，而内心越发柔软。我想成为这样的人哦~
+<img src="https://s3-ap-southeast-1.amazonaws.com/lucyyang/3.jpg" alt="3：http://oub7k42zb.bkt.clouddn.com/3.jpg">
+这个是这学期带的留学生，我当了一学期的EDA助教，只有六个留学生，有2、3个倒是还是非常认真的，所以也一直有回答他们的问题，有一个还翻到了我的网站。这里鼓励一下吧，Come on,you guys will be better and better!</p>
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/lucyyang/4.jpg" alt="4：http://oub7k42zb.bkt.clouddn.com/4.jpg">
+咦我低调么？当然能当大神很好呀，可果也曾经告诉我，当大神的路可不好走呀。嘛，我还是很希望自己能强大起来，可以多帮助别人啊！</p>
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/lucyyang/5.jpg" alt="5：http://oub7k42zb.bkt.clouddn.com/5.jpg">
+这个。。。。确实有时候遇到难题了会有点想“豁出命来”的冲动，以后还是要注意，我还没遇到你呀，可不能不要命啊。</p>
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/lucyyang/6.jpg" alt="6：http://oub7k42zb.bkt.clouddn.com/6.jpg">
+哼唧，魅力大也找不到男票啊QAQ</p>
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/lucyyang/7.jpg" alt="7：http://oub7k42zb.bkt.clouddn.com/7.jpg">
+哼唧，人家才不乖巧！</p>
+<p><img src="https://s3-ap-southeast-1.amazonaws.com/lucyyang/8.jpg" alt="8：http://oub7k42zb.bkt.clouddn.com/8.jpg">
+EXO me???</p>
+<p><img src="hhttps://s3-ap-southeast-1.amazonaws.com/lucyyang/9.jpg" alt="9：http://oub7k42zb.bkt.clouddn.com/9.jpg">
+衷心祝福你们能互相扶持，走到一起，请一定好好对我家yt呀~~~</p>
+<p>最近周围人以及我自己发生了很多事情。首先是yt和sy聊到了一起（我介绍的！我敲棒！），现在除了没见过面，两人都觉得对方很不错呢！希望他们真的可以走到一起呀，加油加油！</p>
+<p>而我，大约是拒了一个研究生阶段能遇到的最优秀的人了吧（这句话可以化掉了。。。。。现在已经觉得并不是了）。之前感觉各方面都很好，说话温柔又萌，确实很有好感（唔，现在看来我看人真的有点浅薄），后来交流了过去的情况，我就比较害怕了。大三or大四的时候我的舍友说我有感情洁癖，我后来想了想，确实是这样，而且很难改变，是根深入骨的那种。我渴望的是专一的情感，惧怕出轨和背叛，同时因为初恋的事情，我对分手的过程还是很害怕的，尽管奶奶一直劝我大学要多谈几次，但是我真的不愿意多次分分合合，不仅阈值会上升，而且感觉也会被掏空精力的（奇怪的话....）我想要的是一份足够值得信任与稳定的情感。</p>
+<p>嘛，既然我要求这么高，那我的回馈自然也得是尽可能多给的，曾经和舍友开玩笑说“以后真要确定了男票，我一定要把他宠到天上去2333333”，舍友当时就楞了，说“那我当你的男票好不好”，倒是还真有几分真意2333333（不过后来仔细想想，可以抱着这样的心态，但是行动上还是要谨慎的2333，已经不敢再毫不设防的让人伤害一下了）。所以对于感情我确实是非常小心谨慎，不愿失误的，分手的那种痛苦，无法交流沟通的那份悲伤，请少一点吧，真的让人很累啊，对于一个悲剧都不愿看的人来说。唉，只能祝你遇到一个合适的，全心全意爱着你的妹子了~</p>
+<p>啊，另外一个重要的决定是我下定决心出国读博了，国内最近发生的事情确实太令人失望了，凉了人心吧，就算以后真要留在国内，估计也不太想要孩子了吧。所以，估计国内是碰不见你了吧，研究生应该也不会谈恋爱了，安安心心做自己的事情吧，希望能在异国他乡遇到你呀，嘛，实在是找不到的话，就自己一个人过一生，也没什么不满意的了。（啊喂，作为未来的男票，你还是多专注点自己的事情吧，别太浪了好伐。。。。不然聊到感情经历我估计又要重演一次怂拒了。。。等我啊~）
+呐，12月份继续加油啦~~</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/01/05/我的读书史/" data-toggle="tooltip" data-placement="top"
+                           title="我的读书之旅">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/11/11/钢琴练习中的慢/" data-toggle="tooltip" data-placement="top"
+                           title="钢琴练习中的慢">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA0OS82NjEz">
+                    <script type="text/javascript">
+                       (function(d, s) {
+                           var j, e = d.getElementsByTagName(s)[0];
+
+                           if (typeof LivereTower === 'function') { return; }
+
+                           j = d.createElement(s);
+                           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                           j.async = true;
+
+                           e.parentNode.insertBefore(j, e);
+                       })(document, 'script');
+                    </script>
+                    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+<!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#生活"
+                           title="生活">生活</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="http://blog.nebula.moe/">nebula</a></li>
+                        
+                        <li><a href="http://chengpeng.space/">ChengPeng</a></li>
+                        
+                        <li><a href="https://ring0.me/">boj</a></li>
+                        
+                        <li><a href="https://sd-invol.github.io">轩</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                
+                <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+                
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Lucyyang 2020
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                   
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://lucyyang719.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-104173686-1';
+    var _gaDomain = 'lucyyang719.com';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '8d7d181e1a570aab168b4b03341e12d1';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://lucyyang719.com/img/saberQ2.jpg"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>
