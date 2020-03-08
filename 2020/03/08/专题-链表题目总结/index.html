@@ -84,7 +84,7 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
+                            <a href="/About/">About</a>
                         </li>
 							
 						
@@ -92,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/About/">About</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -248,7 +248,7 @@
 慢指针路程=a+b。</p>
 <p>快指针走的路程是慢指针的两倍，所以：
 （a+b*2=a+(b+c)k+b
-化简可得：
+化简得：
 a=(k-1)(b+c)+c 这个式子的意思是： 链表头到环入口的距离=相遇点到环入口的距离+（k-1）圈环长度。其中k&gt;=1,所以k-1&gt;=0圈。所以两个指针分别从链表头和相遇点出发，最后一定相遇于环入口。</p>
 <p>代码：
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">EntryNodeOfLoop</span><span class="params">(ListNode* pHead)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">if</span>(pHead == <span class="literal">nullptr</span>)</div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pHead-&gt;next == <span class="literal">nullptr</span>)</div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        ListNode *slow, *fast;</div><div class="line">        slow = pHead;</div><div class="line">        fast = pHead;</div><div class="line">        <span class="comment">//求环中的一个点</span></div><div class="line">        <span class="keyword">while</span>(fast != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next != <span class="literal">nullptr</span>)&#123;</div><div class="line">            slow = slow-&gt;next;</div><div class="line">            fast = fast-&gt;next-&gt;next;</div><div class="line">            <span class="keyword">if</span>(slow == fast)</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;slow-&gt;val;</div><div class="line">        </div><div class="line">        <span class="comment">//求入口</span></div><div class="line">        <span class="keyword">if</span>(!fast||!fast-&gt;next)<span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        slow = pHead;</div><div class="line">        <span class="keyword">while</span>(slow != fast) &#123;</div><div class="line">            slow = slow-&gt;next;</div><div class="line">            fast = fast-&gt;next;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> slow;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
