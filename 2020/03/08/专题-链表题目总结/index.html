@@ -80,6 +80,16 @@
                         
                     
                         
+                    
+                        
+							
+                        <li>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
 							
                         <li>
                             <a href="/About/">About</a>
@@ -102,16 +112,6 @@
                         </li>
 							
 						
-                    
-                        
-							
-                        <li>
-                            <a href="/Archive/">Archive</a>
-                        </li>
-							
-						
-                    
-                        
                     
                         
                     
@@ -256,6 +256,16 @@ a=(k-1)(b+c)+c 这个式子的意思是： 链表头到环入口的距离=相遇
 <p>题目: <a href="https://leetcode.com/problems/reorder-list/" target="_blank" rel="external">Reorder List</a></p>
 <p>方法：这个题目可以拆分成三个小问：1.将链表拆成前面一半和后面一半(快慢指针)；2.将后面一半的链表进行反转(反转链表)；3.将后面一半的链表合并到前面一半的链表中。</p>
 <p><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reorderList</span><span class="params">(ListNode* head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(head == <span class="literal">nullptr</span>)</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(head-&gt;next == <span class="literal">nullptr</span>)</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        ListNode *fast, *slow;</div><div class="line">        fast = head;</div><div class="line">        slow = head;</div><div class="line">        ListNode *pre;</div><div class="line">        </div><div class="line">        <span class="comment">// 快慢指针分割</span></div><div class="line">        <span class="keyword">while</span>(fast != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next != <span class="literal">nullptr</span>)&#123;</div><div class="line">            fast = fast-&gt;next-&gt;next;</div><div class="line">            pre = slow;</div><div class="line">            slow = slow-&gt;next;</div><div class="line">        &#125;</div><div class="line">   </div><div class="line">        pre-&gt;next = <span class="literal">nullptr</span>;</div><div class="line">        fast = head;</div><div class="line">        </div><div class="line">      <span class="comment">// 反转后半部分链表</span></div><div class="line">      ListNode *p1 = <span class="literal">nullptr</span>;  </div><div class="line">      ListNode *p2 = slow; </div><div class="line">        <span class="keyword">while</span>(p2!= <span class="literal">nullptr</span>)&#123;</div><div class="line">            ListNode *tmp = p2-&gt;next;</div><div class="line">            p2-&gt;next = p1;</div><div class="line">            p1 = p2;</div><div class="line">            p2 = tmp;</div><div class="line">        &#125;</div><div class="line">        slow = p1;</div><div class="line">        fast = head;</div><div class="line"></div><div class="line">        <span class="comment">//slow is the head of last part</span></div><div class="line">        <span class="comment">// 进行拼接 slow的节点数最多比fast的多一个</span></div><div class="line">       ListNode *Lnext, *Fpre;</div><div class="line">       <span class="keyword">while</span>(fast != <span class="literal">nullptr</span>)&#123;</div><div class="line">           Lnext= slow;</div><div class="line">           slow = slow-&gt;next;</div><div class="line">           Lnext-&gt;next = fast-&gt;next;</div><div class="line">           fast-&gt;next = Lnext;</div><div class="line">           Fpre = fast-&gt;next;</div><div class="line">           fast = fast-&gt;next-&gt;next;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       Fpre-&gt;next= slow; <span class="comment">// 不要忘了可能还有slow的最后一个元素    </span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2>删除链表中重复的节点1</h2>
+<p>题目：如果链表为1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;4，请返回1-&gt;2-&gt;3-&gt;4。</p>
+<p>方法：比较简单,直接判断p1和p2(p1-&gt;next)值是否相同，相同则p2后移，直到找到不通的值时，再将p1-&gt;next连接到p2。<strong>注意：只有在p1和p2值不相同的时候，才进行连接，并二者都后移一个节点</strong></p>
+<p>代码：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">deleteDuplicates</span><span class="params">(ListNode* head)</span> </span>&#123;</div><div class="line">        ListNode *p1, *p2, *p;</div><div class="line">        <span class="keyword">if</span>(head == <span class="literal">nullptr</span>)</div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        p1 = head;</div><div class="line">        p2 = head-&gt;next;</div><div class="line">        p = p1;</div><div class="line">        <span class="keyword">while</span>(p2 != <span class="literal">nullptr</span>)&#123;</div><div class="line">            <span class="keyword">if</span>(p2-&gt;val == p1-&gt;val) &#123;</div><div class="line">                p2 = p2-&gt;next;</div><div class="line">                p1-&gt;next = <span class="literal">nullptr</span>;</div><div class="line">            &#125;<span class="keyword">else</span> &#123;</div><div class="line">                p1-&gt;next = p2;</div><div class="line">                p1 = p1-&gt;next;</div><div class="line">                p2 = p2-&gt;next;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> p;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2>删除链表中重复的节点2</h2>
+<p>题目：如果链表为1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;4，请返回1-&gt;4。</p>
+<p>方法：这个题目的和上一题的不同之处在于，是要删除全部的重复节点。注意设一个pNewHead，方便对特殊情况的处理。设p1,p2两个指针，p1指向当前准备连接next的节点，p2用于探查节点和节点的next是否值相同。如果节点和后一个节点值相同，则p2一直跳到第一个不相同的节点处，并将p1-&gt;next指向p2。<strong>注意：我们不在之前的步骤中进行p1和p2节点的后移，全部放在当发现p2值和p2-&gt;next值不同时一起处理</strong>。如果p2-&gt;next和p2值不通，那么不论是因为在上一步进行了删去重复节点并进行连接的处理还是本来二者之间都没有重复节点，p1-&gt;next都已指向p2，因此直接后移即可。</p>
+<p>代码：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">deleteDuplication</span><span class="params">(ListNode* pHead)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">if</span>(pHead == <span class="literal">NULL</span>)</div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        ListNode *pNewHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">        ListNode *p1, *p2;</div><div class="line">        pNewHead-&gt;next = pHead; <span class="comment">//忘记连接了</span></div><div class="line">        p1 = pNewHead;</div><div class="line">        p2 = pHead;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(p2 != <span class="literal">nullptr</span> &amp;&amp; p2-&gt;next != <span class="literal">nullptr</span>) &#123; <span class="comment">//后面要用到p2</span></div><div class="line">            <span class="keyword">if</span>(p2-&gt;val == p2-&gt;next-&gt;val) &#123;</div><div class="line">                <span class="keyword">int</span> val = p2-&gt;val;</div><div class="line">                <span class="keyword">while</span>(p2!= <span class="literal">nullptr</span> &amp;&amp; p2-&gt;val == val) &#123;</div><div class="line">                    p2 = p2-&gt;next;</div><div class="line">                &#125;</div><div class="line">                p1-&gt;next = p2;</div><div class="line">                <span class="comment">//保持了p2比p1往前一个的状态，进入下一次的循环</span></div><div class="line">            &#125;<span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">//则p1本身next就与p2进行了连接</span></div><div class="line">                p1 = p2;</div><div class="line">                p2 = p2-&gt;next;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        pNewHead = pNewHead-&gt;next;</div><div class="line">        <span class="keyword">return</span> pNewHead;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
                 <hr>
                 
@@ -300,7 +310,7 @@ a=(k-1)(b+c)+c 这个式子的意思是： 链表头到环入口的距离=相遇
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">链表的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">反转链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">找到链表的中点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">找到链表环的入口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">变换链表顺序</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">链表的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">反转链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">找到链表的中点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">找到链表环的入口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">变换链表顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">删除链表中重复的节点1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">删除链表中重复的节点2</span></a></li></ol>
                 </div>
             </div>
         </div>
