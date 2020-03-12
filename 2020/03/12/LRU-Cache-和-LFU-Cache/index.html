@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lucyyang在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://lucyyang719.com/img/saberQ4.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Lucyyang" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <title>
+        
+        LRU Cache 和 LFU Cache｜Lucyyang&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://lucyyang719.com/2020/03/12/LRU-Cache-和-LFU-Cache/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Lucyyang
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/About/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://lucyyang719.com/img/banner.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      <!--$表示行内元素，$$表示块状元素 -->
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<!--加载MathJax的最新文件， async表示异步加载进来 -->
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>LRU Cache 和 LFU Cache</h1>
+                    
+                    <span class="meta">
+                         作者 Lucyyang
+                        <span>
+                          日期 2020-03-12
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#算法"
+                           title="算法">算法</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            LRU Cache 和 LFU Cache
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <blockquote>
+<p>Easy choice, hard life; hard choice, easy life.</p>
+</blockquote>
+<p>总结一下两道缓存器设计题目，分别是<a href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="external">LRU Cache</a>和<a href="https://leetcode.com/problems/lfu-cache/" target="_blank" rel="external">LFU Cache</a>。二者设计既有共同点，也有区别，下面分别进行讨论。</p>
+<h2>LRU Cache</h2>
+<p>先普及下知识，什么是Least Recently Used (LRU) cache：在一个缓存器中，存储着容量(capacity)以内的元素(key, value)，对该存储器无论事存(put)还是取(get)都相当于使用了一次该元素。当容量达到上限，继续存储时，该存储器就会扔掉最少的元素。例如容量为2时，我们先put(key = 1, value = 1)，再put(key = 2, value = 2)，当我们调用get(key = 1)时，(1,1)这个元素的优先级就提高了，如果再次put(key = 3, value = 3)，则会将最少使用的(2,2)丢掉。</p>
+<p>题目：要求实现LRU Cache中put和get时间复杂度都为O(1)的方法</p>
+<p>方法：要求删除和插入时间复杂度都为O(1)，那么最先想到的就是double list，假设我们已经知道了一个节点node的位置，删除该节点只需node-&gt;pre-&gt;next = node-&gt;next，node-&gt;next-&gt;pre = node-&gt;pre即可完成。如果double list要插入node_new，只需node_new-&gt;pre = node-&gt;pre, node_new-&gt;next = node,node-&gt;pre-&gt;next = node_new, node-&gt;pre = node_new即可。C++中，list即为double list。</p>
+<p>那么接下来的问题就是如何在O(1)时间内找到double list的节点位置，我们可以用hash table进行实现，C++中的数据结构为unordered_map。在unordered_map中存储key和对应的double list节点的地址(迭代器)，则当我们查询某个元素的时候即可快速返回其在double list中的位置。</p>
+<p><img src="./HashLinkedList.jpg" alt="HashLinkedList.jpg"></p>
+<p>接下来就是具体的实现逻辑了，通过伪代码的方法进行介绍：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> &#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line"><span class="keyword">int</span> capacity; <span class="comment">//容量，全局变量</span></div><div class="line"><span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; recent; <span class="comment">// double list，存储key 和value</span></div><div class="line"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;::iterator&gt; <span class="built_in">map</span>; <span class="comment">// hash table，用于查找并返回double list中的节点位置</span></div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    </div><div class="line">    LRUCache(<span class="keyword">int</span> capacity) : capacity(capacity) &#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</div><div class="line">    	<span class="comment">// 如果在hash table 中找到了key，</span></div><div class="line">    		<span class="comment">//采用一个trick：通过调用put函数，将其优先级提到最高</span></div><div class="line">    		<span class="comment">//返回该元素value</span></div><div class="line">    	<span class="comment">// 否则返回-1表示该元素不存在        </span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">         <span class="comment">// 分两种情况，一是cache中已经有这个元素了，只需消除本来元素，并将优先级提前</span></div><div class="line">         <span class="comment">// 另一种是该元素是新的，此时要判断现有元素个数是否已经要超过容量了</span></div><div class="line">    		<span class="comment">//如果超过了容量，则删去双向链表最末端的元素(即最少使用的元素)，再将该元素插入至头部</span></div><div class="line">    		<span class="comment">//如果没有超过容量，直接插入至链表头部，不要忘了更新hash table</span></div><div class="line"></div><div class="line">    	<span class="comment">// 根据以上逻辑，可以将元素插入链表以及更新hash table放到最后一起做     </span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>最后的实现代码：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> &#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line"><span class="keyword">int</span> capacity;</div><div class="line"><span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; recent;</div><div class="line"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;::iterator&gt; <span class="built_in">map</span>;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    </div><div class="line">    LRUCache(<span class="keyword">int</span> capacity) : capacity(capacity) &#123;&#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">map</span>.find(key) != <span class="built_in">map</span>.end())&#123;</div><div class="line">            put(key, <span class="built_in">map</span>[key]-&gt;second);</div><div class="line">            <span class="keyword">return</span> <span class="built_in">map</span>[key]-&gt;second; <span class="comment">//返回的是val，因此是第二个值</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  </div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">map</span>.find(key) != <span class="built_in">map</span>.end()) &#123;</div><div class="line">            <span class="keyword">auto</span> it = <span class="built_in">map</span>[key];</div><div class="line">            recent.erase(it);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(recent.size() &gt;= capacity) &#123;</div><div class="line">            <span class="built_in">map</span>.erase(recent.back().first);</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"erase:%d\n"</span>,recent.back().first);</div><div class="line">            recent.pop_back();</div><div class="line">        &#125;</div><div class="line">        recent.push_front(&#123;key, value&#125;);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"put:%d\n"</span>,recent.front());</div><div class="line">        <span class="built_in">map</span>[key] = recent.begin(); <span class="comment">// 注意更新map中key的值</span></div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Your LRUCache object will be instantiated and called as such:</span></div><div class="line"><span class="comment"> * LRUCache* obj = new LRUCache(capacity);</span></div><div class="line"><span class="comment"> * int param_1 = obj-&gt;get(key);</span></div><div class="line"><span class="comment"> * obj-&gt;put(key,value);</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
+<h2>LFU Cache</h2>
+<p>LFU Cache是指，根据元素的使用频率，当元素超过容量上限时，优先删除使用频率最低的元素，如果有多个使用频率最低的元素，优先删除最近不使用的那个(这点和LRU Cache一致)。LFU Cache的put和get也可以做到O(1)复杂度，不过做法稍微复杂一些。</p>
+<p>方法：首先因为要统计元素的使用频率，我们需要重新对node设计一个struct，包括其key, value, 频率freq以及指向链表的一个指针。我们采用两个hash table，第一个存储的是key和对应的node结构，第二个map存储了一个频率链表。即按照不同的使用频率进行划分，而之前提到的node指针就指向了该链表中的节点的位置。但我们put一个节点时，如果该节点已经存在，我们就会将其提升到频率+1的链表头，删去原来所在的链表位置。此外我们用一个min_freq_记录当前使用最少的节点的频率，当元素超过容量时，我们优先删去min_freq_对应的链表的尾，即实现了删除最低频率下最少使用的元素。</p>
+<p><img src="./twoHash.png" alt="twoHash.png"></p>
+<p>该题逻辑比较复杂，在面试中常作为LRU的follow up，一般只要求回答具体使用的结构即可。</p>
+<p>实现代码：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CacheNode</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> key;</div><div class="line">    <span class="keyword">int</span> value;</div><div class="line">    <span class="keyword">int</span> freq;</div><div class="line">    </div><div class="line">    <span class="comment">// 指向链表节点的指针</span></div><div class="line">    <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;::const_iterator it;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LFUCache</span> &#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> capacity_;</div><div class="line">    <span class="keyword">int</span> min_freq_;</div><div class="line">    </div><div class="line">    <span class="comment">// key -&gt; CahceNode</span></div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, CacheNode&gt; n_; <span class="comment">// 用于存储节点</span></div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;&gt; l_; <span class="comment">// 用于查找使用频率</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// touch方法用于更新节点的频率，并将node从原先的频率链表中提升到freq+1的频率链表</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">touch</span><span class="params">(CacheNode&amp; node)</span> </span>&#123;</div><div class="line">        <span class="comment">// Step 1: update the frequency</span></div><div class="line">        <span class="keyword">const</span> <span class="keyword">int</span> prev_freq = node.freq;</div><div class="line">        <span class="keyword">const</span> <span class="keyword">int</span> freq = ++(node.freq);</div><div class="line">        </div><div class="line">        <span class="comment">// Step 2: 在原先的链表中删除节点</span></div><div class="line">        l_[prev_freq].erase(node.it);</div><div class="line">        <span class="comment">// Step 3: 如果原先频率的链表已经没有值并且是最小元素，则对min_freq_进行更新</span></div><div class="line">        <span class="keyword">if</span>(l_[prev_freq].empty() &amp;&amp; prev_freq == min_freq_) &#123;</div><div class="line">            <span class="comment">// Delete the list</span></div><div class="line">            l_.erase(prev_freq);</div><div class="line">            <span class="comment">// Increase the min freq</span></div><div class="line">            ++min_freq_;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">// Step 4: 注意是在新的频率链表的头部进行插入</span></div><div class="line">        l_[freq].push_front(node.key);</div><div class="line">        </div><div class="line">        <span class="comment">// Step 5: 更新node的位置指针</span></div><div class="line">        node.it = l_[freq].cbegin();</div><div class="line">    &#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    LFUCache(<span class="keyword">int</span> capacity): capacity_(capacity), min_freq_(<span class="number">0</span>) &#123; &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</div><div class="line">        <span class="keyword">auto</span> it = n_.find(key);</div><div class="line">        <span class="keyword">if</span> (it == n_.cend()) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        touch(it-&gt;second); <span class="comment">//更新node的链表位置提升频率</span></div><div class="line">        <span class="keyword">return</span> it-&gt;second.value;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (capacity_ == <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">auto</span> it = n_.find(key);</div><div class="line">        <span class="keyword">if</span> (it != n_.cend()) &#123;</div><div class="line">            it-&gt;second.value = value; <span class="comment">// same key, not the same value</span></div><div class="line">            touch(it-&gt;second);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (n_.size() == capacity_) &#123;</div><div class="line">            <span class="comment">// No capacity, need to remove one entry that</span></div><div class="line">            <span class="comment">// 1. has the lowest freq</span></div><div class="line">            <span class="comment">// 2. least recently used if there are multiple ones</span></div><div class="line">            </div><div class="line">            <span class="comment">// Step 1: remove the element from min_freq_ list</span></div><div class="line">            <span class="keyword">const</span> <span class="keyword">int</span> key_to_evict = l_[min_freq_].back();</div><div class="line">            l_[min_freq_].pop_back();</div><div class="line">            </div><div class="line">            <span class="comment">// Step 2: remove the key from cache</span></div><div class="line">            n_.erase(key_to_evict);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">// 如果是新元素，freq则为1并更新min_freq_</span></div><div class="line">        <span class="keyword">const</span> <span class="keyword">int</span> freq = <span class="number">1</span>;</div><div class="line">        min_freq_ = freq;</div><div class="line">        </div><div class="line">        <span class="comment">// Add the key to the freq list</span></div><div class="line">        l_[freq].push_front(key);</div><div class="line">        </div><div class="line">        <span class="comment">// 更新hash table的位置</span></div><div class="line">        n_[key] = &#123;key, value, freq, l_[freq].cbegin()&#125;;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Your LFUCache object will be instantiated and called as such:</span></div><div class="line"><span class="comment"> * LFUCache* obj = new LFUCache(capacity);</span></div><div class="line"><span class="comment"> * int param_1 = obj-&gt;get(key);</span></div><div class="line"><span class="comment"> * obj-&gt;put(key,value);</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/03/08/专题-链表题目总结/" data-toggle="tooltip" data-placement="top"
+                           title="专题: 链表题目总结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA0OS82NjEz">
+                    <script type="text/javascript">
+                       (function(d, s) {
+                           var j, e = d.getElementsByTagName(s)[0];
+
+                           if (typeof LivereTower === 'function') { return; }
+
+                           j = d.createElement(s);
+                           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                           j.async = true;
+
+                           e.parentNode.insertBefore(j, e);
+                       })(document, 'script');
+                    </script>
+                    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+<!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">LRU Cache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">LFU Cache</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#算法"
+                           title="算法">算法</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="http://blog.nebula.moe/">nebula</a></li>
+                        
+                        <li><a href="http://chengpeng.space/">ChengPeng</a></li>
+                        
+                        <li><a href="https://ring0.me/">boj</a></li>
+                        
+                        <li><a href="https://sd-invol.github.io">轩</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                
+                <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+                
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Lucyyang 2020
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                   
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://lucyyang719.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-104173686-1';
+    var _gaDomain = 'lucyyang719.com';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '8d7d181e1a570aab168b4b03341e12d1';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://lucyyang719.com/img/saberQ2.jpg"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>
