@@ -80,19 +80,9 @@
                         
                     
                         
-                    
-                        
 							
                         <li>
                             <a href="/About/">About</a>
-                        </li>
-							
-						
-                    
-                        
-							
-                        <li>
-                            <a href="/Tags/">Tags</a>
                         </li>
 							
 						
@@ -108,10 +98,20 @@
                         
 							
                         <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
                             <a href="/Talks/">Talks</a>
                         </li>
 							
 						
+                    
+                        
                     
                         
                     
@@ -318,6 +318,65 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/13/LLVM编译器框架介绍/">
+        <h2 class="post-title">
+            LLVM编译器框架介绍
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                本文摘自LLVM项目的创始者Chris Lattner的介绍：The Architecture of Open Source Applications: LLVM
+什么是LLVM？
+LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的编译器组件和工具链，用来开发编译器前端和后端。它与其..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/13/采用LLVM构建语言编译器/">
+        <h2 class="post-title">
+            采用LLVM构建语言编译器
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+千里之行，始于足下
+
+整体逻辑
+Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
+生成LLVM IR
+加入JIT和优化支持
+Pass
+介绍了如何加入JIT编译器支持和优化支持。
+IR builder可以生成中间逻辑代码，对简单的常量加减直接进..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
     <a href="/2020/03/13/积分纪录榜/">
         <h2 class="post-title">
             积分纪录榜
@@ -416,66 +475,6 @@ LRU Cache
 <hr>
  
 
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/08/专题-链表题目总结/">
-        <h2 class="post-title">
-            专题: 链表题目总结
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-08
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-sd0061:&quot;你超级厉害，只要再学会CS的算法和三大项，就无敌啦！&quot;
-
-开始重新刷起Leetcode啦，距离上学会有一段比较长的时间，于是这次打算彻彻底底的好好刷题学算法。那么就从链表总结起来吧。
-链表的结构
-struct ListNode &#123;    int v..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/07/回归/">
-        <h2 class="post-title">
-            回归
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-07
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-&quot;只要我决心成功，失败就不会将我击倒。&quot;
-
-宣告回归Blog！
-迈出第一步！
-先放个鸡血视频！
-
-
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
 
 
 <!-- 翻页 pager -->
@@ -563,13 +562,13 @@ struct ListNode &#123;    int v..
                 <div class="tags">
                     
                     
-                    <a href="http://lucyyang719.com/Tags/#读书" title="读书"
-                       rel="1">读书</a>
-                    
-                    
-                    
                     <a href="http://lucyyang719.com/Tags/#总结" title="总结"
                        rel="1">总结</a>
+                    
+                    
+                    
+                    <a href="http://lucyyang719.com/Tags/#读书" title="读书"
+                       rel="1">读书</a>
                     
                     
                     
@@ -590,6 +589,11 @@ struct ListNode &#123;    int v..
                     
                     <a href="http://lucyyang719.com/Tags/#生活" title="生活"
                        rel="2">生活</a>
+                    
+                    
+                    
+                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
+                       rel="2">CS</a>
                     
                     
                     
