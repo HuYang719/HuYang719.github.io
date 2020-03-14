@@ -22,7 +22,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://lucyyang719.com/2020/03/13/采用LLVM构建语言编译器/">
+    <link rel="canonical" href="http://lucyyang719.com/2020/03/14/采用LLVM构建语言编译器/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -197,7 +197,7 @@
                     <span class="meta">
                          作者 Lucyyang
                         <span>
-                          日期 2020-03-13
+                          日期 2020-03-14
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -229,6 +229,16 @@
 <h2>整体逻辑</h2>
 <p>Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化</p>
 <h2>生成LLVM IR</h2>
+<p>之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。</p>
+<p>具体流程如下:
+首先在AST的子类中添加Codegen()函数
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/// ExprAST - Base class for all expression nodes.</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExprAST</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="keyword">virtual</span> ~ExprAST() &#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">virtual</span> Value *<span class="title">codegen</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>申明三个重要的全局变量：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">static</span> Module Module_Ob;</div><div class="line"><span class="keyword">static</span> IRBuilder&lt;&gt; Builder(getGlobalContext());</div><div class="line"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, Value&gt; Named_values;</div></pre></td></tr></table></figure></p>
+<p>其中Module_Ob模块包含了代码中所有的函数和变量；Builder对象用于帮助生成LLVM IR并且记录程序的当前点，用以插入LLVM指令；Named_Values记录当前作用域的定义值，方便查找。</p>
+<p>接下来对每个不同类型分别定义代码生成函数，首先</p>
+<p>由于Codegen()调用了LLVM内建的函数来生成IR，因此需要引入这些头文件: llvm/IR/Verifier.h, llvm/IR/DerivedTypes.h 。在编译的时候，也需要将这些代码链接到LLVM库中，因此使用llvm-config工具：
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">llvm-config --cxxflags --ldflags --system-libs --libs core</div></pre></td></tr></table></figure></p>
 <h2>加入JIT和优化支持</h2>
 <h3>Pass</h3>
 <p>介绍了如何加入JIT编译器支持和优化支持。</p>
@@ -248,14 +258,50 @@
 <p>从加入条件语句和循环中，我们可以看到如何给自己的语句增加更多的功能。</p>
 <h3>条件语句</h3>
 <p>具体流程：</p>
-<ul>
+<ol>
 <li>首先增加if/else/then的token</li>
-<li>加入对应的AST的节点</li>
-<li>为条件语句扩展parser函数</li>
-<li>为条件语句的AST添加codegen函数</li>
-<li>生成LLVM IR中间代码</li>
-</ul>
+</ol>
+<p><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">// control</span></div><div class="line">tok_if = <span class="number">-6</span>,</div><div class="line">tok_then = <span class="number">-7</span>,</div><div class="line">tok_else = <span class="number">-8</span>,</div></pre></td></tr></table></figure></p>
+<p>并在gettok函数中，加入对应的分支：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (IdentifierStr == <span class="string">"def"</span>)</div><div class="line">  <span class="keyword">return</span> tok_def;</div><div class="line"><span class="keyword">if</span> (IdentifierStr == <span class="string">"extern"</span>)</div><div class="line">  <span class="keyword">return</span> tok_extern;</div><div class="line"><span class="keyword">if</span> (IdentifierStr == <span class="string">"if"</span>)</div><div class="line">  <span class="keyword">return</span> tok_if;</div><div class="line"><span class="keyword">if</span> (IdentifierStr == <span class="string">"then"</span>)</div><div class="line">  <span class="keyword">return</span> tok_then;</div><div class="line"><span class="keyword">if</span> (IdentifierStr == <span class="string">"else"</span>)</div><div class="line">  <span class="keyword">return</span> tok_else;</div><div class="line"><span class="keyword">return</span> tok_identifier;</div></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>
+<p>加入对应的AST的节点
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 增加选择分支的AST节点</span></div><div class="line"><span class="comment">/// IfExprAST - Expression class for if/then/else.</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IfExprAST</span> :</span> <span class="keyword">public</span> ExprAST &#123;</div><div class="line">  <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;ExprAST&gt; Cond, Then, Else;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  IfExprAST(<span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;ExprAST&gt; Cond, <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;ExprAST&gt; Then,</div><div class="line">            <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;ExprAST&gt; Else)</div><div class="line">    : Cond(<span class="built_in">std</span>::move(Cond)), Then(<span class="built_in">std</span>::move(Then)), Else(<span class="built_in">std</span>::move(Else)) &#123;&#125;</div><div class="line"></div><div class="line">  <span class="function">Value *<span class="title">codegen</span><span class="params">()</span> override</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>为条件语句扩展parser函数
+加入ParseIfExpr()函数，函数中根据Cond-&gt;Then-&gt;Else的顺序check分支是否完整。</p>
+</li>
+<li>
+<p>为条件语句的AST添加codegen函数</p>
+</li>
+</ol>
+<p>条件语句的LLVM IR目标代码如下:
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><div class="line">declare double @foo()</div><div class="line"></div><div class="line">declare double @bar()</div><div class="line"></div><div class="line">define double @baz(double %x) &#123;</div><div class="line"><span class="symbol">entry:</span></div><div class="line">  %ifcond = fcmp one double %x, <span class="number">0.000000e+00</span></div><div class="line">  br i1 %ifcond, label %then, label <span class="meta">%else</span></div><div class="line"></div><div class="line"><span class="symbol">then:</span>       <span class="comment">; preds = %entry</span></div><div class="line">  %calltmp = <span class="keyword">call</span> double @foo()</div><div class="line"><span class="symbol">  br label</span> %ifcont</div><div class="line"></div><div class="line"><span class="symbol">else:</span>       <span class="comment">; preds = %entry</span></div><div class="line">  %calltmp1 = <span class="keyword">call</span> double @bar()</div><div class="line"><span class="symbol">  br label</span> %ifcont</div><div class="line"></div><div class="line"><span class="symbol">ifcont:</span>     <span class="comment">; preds = %else, %then</span></div><div class="line">  %iftmp = phi double [ %calltmp, %then ], [ %calltmp1, <span class="meta">%else</span> ]</div><div class="line">  <span class="keyword">ret</span> double %iftmp</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>完成前端的解析后，即可加入LLVM IR的代码生成支持。在生成分支代码的时候存在一个问题：条件语句之后的代码模块怎么知道是哪个分支返回的结果？其实是采用了<a href="https://en.wikipedia.org/wiki/Static_single_assignment_form" target="_blank" rel="external">Phi指令</a>，简单来讲就是Phi指令需要记住是哪个代码模块返回的结果。</p>
+<p>了解之后，我们来看具体代码,首先是给条件分支的AST节点IfExprAST加入codegen函数生成代码：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line">Value *IfExprAST::codegen() &#123;</div><div class="line">  Value *CondV = Cond-&gt;codegen();</div><div class="line">  <span class="keyword">if</span> (!CondV)</div><div class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line"></div><div class="line">  <span class="comment">// Convert condition to a bool by comparing non-equal to 0.0.</span></div><div class="line">  CondV = Builder.CreateFCmpONE(</div><div class="line">      CondV, ConstantFP::get(TheContext, APFloat(<span class="number">0.0</span>)), <span class="string">"ifcond"</span>);</div></pre></td></tr></table></figure></p>
+<p>类似的，分别再生成Then, Else的代码。</p>
+<ol start="5">
+<li>生成LLVM IR中间代码
+TODO: 具体细节</li>
+</ol>
+<p>给TOY语言加入分支判断功能的方法总结如下：构建相应的token，AST表达式与解析器，之后代码生成器将AST转成LLVM IR，全部的条件语句也随之生成。</p>
 <h3>循环语句</h3>
+<p>我们希望TOY语言实现类似的循环功能：
+<figure class="highlight py"><table><tr><td class="code"><pre><div class="line">extern putchard(char);</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">printstar</span><span class="params">(n)</span></span></div><div class="line">  for i = 1, i &lt; n, 1.0 in</div><div class="line">    putchard(<span class="number">42</span>);  <span class="comment"># ascii 42 = '*'</span></div></pre></td></tr></table></figure></p>
+<p>循环语句的增加和流程相似：</p>
+<ol>
+<li>增加token和AST节点</li>
+<li>针对循环的AST节点加入解析器，写法非常直接，按照顺序一一进行检查：
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/// forexpr ::= 'for' identifier '=' expr ',' expr (',' expr)? 'in' expression</span></div><div class="line"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;ExprAST&gt; ParseForExpr() &#123;</div><div class="line">  getNextToken();  <span class="comment">// eat the for.</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> (CurTok != tok_identifier)</div><div class="line">    <span class="keyword">return</span> LogError(<span class="string">"expected identifier after for"</span>);</div><div class="line"></div><div class="line">  <span class="built_in">std</span>::<span class="built_in">string</span> IdName = IdentifierStr;</div><div class="line">  getNextToken();  <span class="comment">// eat identifier.</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> (CurTok != <span class="string">'='</span>)</div><div class="line">    <span class="keyword">return</span> LogError(<span class="string">"expected '=' after for"</span>);</div><div class="line">  getNextToken();  <span class="comment">// eat '='.</span></div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">auto</span> Start = ParseExpression();</div><div class="line">  <span class="keyword">if</span> (!Start)</div><div class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">  <span class="keyword">if</span> (CurTok != <span class="string">','</span>)</div><div class="line">    <span class="keyword">return</span> LogError(<span class="string">"expected ',' after for start value"</span>);</div><div class="line">  getNextToken();</div><div class="line"></div><div class="line">  <span class="keyword">auto</span> End = ParseExpression();</div><div class="line">  <span class="keyword">if</span> (!End)</div><div class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line"></div><div class="line">  <span class="comment">// The step value is optional.</span></div><div class="line">  <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;ExprAST&gt; Step;</div><div class="line">  <span class="keyword">if</span> (CurTok == <span class="string">','</span>) &#123;</div><div class="line">    getNextToken();</div><div class="line">    Step = ParseExpression();</div><div class="line">    <span class="keyword">if</span> (!Step)</div><div class="line">      <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (CurTok != tok_in)</div><div class="line">    <span class="keyword">return</span> LogError(<span class="string">"expected 'in' after for"</span>);</div><div class="line">  getNextToken();  <span class="comment">// eat 'in'.</span></div><div class="line"></div><div class="line">  <span class="keyword">auto</span> Body = ParseExpression();</div><div class="line">  <span class="keyword">if</span> (!Body)</div><div class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="built_in">std</span>::make_unique&lt;ForExprAST&gt;(IdName, <span class="built_in">std</span>::move(Start),</div><div class="line">                                       <span class="built_in">std</span>::move(End), <span class="built_in">std</span>::move(Step),</div><div class="line">                                       <span class="built_in">std</span>::move(Body));</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ol>
+<p>接下来要生成LLVM IR代码，循环结构的目标代码样式如下：
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><div class="line">declare double @putchard(double)</div><div class="line"></div><div class="line">define double @printstar(double %n) &#123;</div><div class="line"><span class="symbol">entry:</span></div><div class="line">  <span class="comment">; initial value = 1.0 (inlined into phi)</span></div><div class="line"><span class="symbol">  br label</span> %loop</div><div class="line"></div><div class="line"><span class="symbol">loop:</span>       <span class="comment">; preds = %loop, %entry</span></div><div class="line">  %i = phi double [ <span class="number">1.000000e+00</span>, %entry ], [ %nextvar, %loop ]</div><div class="line">  <span class="comment">; body</span></div><div class="line">  %calltmp = <span class="keyword">call</span> double @putchard(double <span class="number">4.200000e+01</span>)</div><div class="line">  <span class="comment">; increment</span></div><div class="line">  %nextvar = <span class="keyword">fadd</span> double %i, <span class="number">1.000000e+00</span></div><div class="line"></div><div class="line">  <span class="comment">; termination test</span></div><div class="line">  %cmptmp = fcmp ult double %i, %n</div><div class="line">  %booltmp = uitofp i1 %cmptmp to double</div><div class="line">  %loopcond = fcmp one double %booltmp, <span class="number">0.000000e+00</span></div><div class="line">  br i1 %loopcond, label %loop, label %afterloop</div><div class="line"></div><div class="line"><span class="symbol">afterloop:</span>      <span class="comment">; preds = %loop</span></div><div class="line">  <span class="comment">; loop always returns 0.0</span></div><div class="line">  <span class="keyword">ret</span> double <span class="number">0.000000e+00</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>接下来插入codegen生成LLVM IR代码，分别加入Loop, Step, End, After, Body的Builder代码</li>
+</ol>
 <p>LLVM用phi指令判断变量具体来自的基本块(不同分支路径)，例如在循环中，%entry模块对i进行初始化赋值，%$loop模块对i进行更新。</p>
 
                 <hr>
@@ -263,15 +309,10 @@
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2020/03/13/LLVM编译器框架介绍/" data-toggle="tooltip" data-placement="top"
-                           title="LLVM编译器框架介绍">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2020/03/13/积分纪录榜/" data-toggle="tooltip" data-placement="top"
-                           title="积分纪录榜">Next Post &rarr;</a>
+                        <a href="/2020/03/13/LLVM编译器框架介绍/" data-toggle="tooltip" data-placement="top"
+                           title="LLVM编译器框架介绍">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

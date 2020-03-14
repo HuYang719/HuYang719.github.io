@@ -318,19 +318,25 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/13/LLVM编译器框架介绍/">
+    <a href="/2020/03/14/采用LLVM构建语言编译器/">
         <h2 class="post-title">
-            LLVM编译器框架介绍
+            采用LLVM构建语言编译器
         </h2>
         <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-14
         </p>
         
         <div class="post-content-preview">
             <p>
-                本文摘自LLVM项目的创始者Chris Lattner的介绍：The Architecture of Open Source Applications: LLVM
-什么是LLVM？
-LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的编译器组件和工具链，用来开发编译器前端和后端。它与其..
+                
+千里之行，始于足下
+
+整体逻辑
+Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
+生成LLVM IR
+之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。
+具体流程如下:
+首先在AST的子类中..
             </p>
         </div>
     </a>
@@ -344,9 +350,9 @@ LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的�
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/13/采用LLVM构建语言编译器/">
+    <a href="/2020/03/13/LLVM编译器框架介绍/">
         <h2 class="post-title">
-            采用LLVM构建语言编译器
+            LLVM编译器框架介绍
         </h2>
         <p class="post-meta">
             <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
@@ -354,16 +360,9 @@ LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的�
         
         <div class="post-content-preview">
             <p>
-                
-千里之行，始于足下
-
-整体逻辑
-Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
-生成LLVM IR
-加入JIT和优化支持
-Pass
-介绍了如何加入JIT编译器支持和优化支持。
-IR builder可以生成中间逻辑代码，对简单的常量加减直接进..
+                本文摘自LLVM项目的创始者Chris Lattner的介绍：The Architecture of Open Source Applications: LLVM
+什么是LLVM？
+LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的编译器组件和工具链，用来开发编译器前端和后端。它与其..
             </p>
         </div>
     </a>
