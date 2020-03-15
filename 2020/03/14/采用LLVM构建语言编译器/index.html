@@ -90,14 +90,6 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
-                        </li>
-							
-						
-                    
-                        
-							
-                        <li>
                             <a href="/Tags/">Tags</a>
                         </li>
 							
@@ -106,12 +98,20 @@
                         
 							
                         <li>
-                            <a href="/Talks/">Talks</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
                     
                         
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
+                        </li>
+							
+						
                     
                         
                     
@@ -232,7 +232,7 @@
 <p>之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。</p>
 <p>具体流程如下:
 首先在AST的子类中添加Codegen()函数
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/// ExprAST - Base class for all expression nodes.</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExprAST</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="keyword">virtual</span> ~ExprAST() &#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">virtual</span> Value *<span class="title">codegen</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">/// ExprAST - Base class for all expression nodes.</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExprAST</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="keyword">virtual</span> ~ExprAST() &#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">virtual</span> Value *<span class="title">codegen</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>申明三个重要的全局变量：
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">static</span> Module Module_Ob;</div><div class="line"><span class="keyword">static</span> IRBuilder&lt;&gt; Builder(getGlobalContext());</div><div class="line"><span class="keyword">static</span> <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, Value&gt; Named_values;</div></pre></td></tr></table></figure></p>
 <p>其中Module_Ob模块包含了代码中所有的函数和变量；Builder对象用于帮助生成LLVM IR并且记录程序的当前点，用以插入LLVM指令；Named_Values记录当前作用域的定义值，方便查找。</p>
