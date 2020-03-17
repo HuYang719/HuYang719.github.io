@@ -82,10 +82,20 @@
                         
 							
                         <li>
+                            <a href="/About/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
                             <a href="/Archive/">Archive</a>
                         </li>
 							
 						
+                    
+                        
                     
                         
 							
@@ -96,24 +106,14 @@
 						
                     
                         
+                    
+                        
 							
                         <li>
                             <a href="/Talks/">Talks</a>
                         </li>
 							
 						
-                    
-                        
-							
-                        <li>
-                            <a href="/About/">About</a>
-                        </li>
-							
-						
-                    
-                        
-                    
-                        
                     
 					
 					
@@ -303,6 +303,15 @@ TODO: 具体细节</li>
 <li>接下来插入codegen生成LLVM IR代码，分别加入Loop, Step, End, After, Body的Builder代码</li>
 </ol>
 <p>LLVM用phi指令判断变量具体来自的基本块(不同分支路径)，例如在循环中，%entry模块对i进行初始化赋值，%$loop模块对i进行更新。</p>
+<h2>生成后端代码</h2>
+<p>LLVM可以通过选择内置的架构生成后端代码，也可以自己写目标文件，对架构进行描述。</p>
+<p>为了得到需要的后端代码，编译器需要知道目标平台的各个方面——寄存器、指令集、调用约定、流水线等，因此可以做很多优化。LLVM通过tablegen来定义目标机器，它包含了目标架构的寄存器、指令集、调用约定等。主要步骤如下:LLVM IR-&gt;SelectionDAG-&gt;MachineDAG-&gt;MachineInstr-&gt;MCInst。</p>
+<ol>
+<li>通过.td文件定义寄存器和寄存器集合，之后通过tablegen函数将.td文件转为.inc文件，并在.cpp文件中引入进行应用。</li>
+<li>定义调用约定，指值如何传递给函数以及如何从函数返回，即传递参数约定和返回值约定。其中传递参数约定指的是通过栈还是通过寄存器传递，如果是寄存器则通过哪个寄存器来传递；返回值传递指通过哪个寄存器返回。</li>
+<li>定义指令集，指令目标描述文件定义了3样内容：操作数，汇编字符串，指令格式。</li>
+<li>Emit Object Code</li>
+</ol>
 
                 <hr>
                 
@@ -352,7 +361,7 @@ TODO: 具体细节</li>
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">整体逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">生成LLVM IR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">加入JIT和优化支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Pass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">JIT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">加入条件语句与循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">条件语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">循环语句</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">整体逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">生成LLVM IR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">加入JIT和优化支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Pass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">JIT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">加入条件语句与循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">条件语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">循环语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">生成后端代码</span></a></li></ol>
                 </div>
             </div>
         </div>
