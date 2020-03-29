@@ -84,7 +84,7 @@
                         
 							
                         <li>
-                            <a href="/About/">About</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -92,7 +92,17 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
+                            <a href="/About/">About</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
                         </li>
 							
 						
@@ -104,16 +114,6 @@
                         </li>
 							
 						
-                    
-                        
-							
-                        <li>
-                            <a href="/Talks/">Talks</a>
-                        </li>
-							
-						
-                    
-                        
                     
 					
 					
@@ -318,6 +318,38 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/14/采用LLVM构建语言编译器/">
+        <h2 class="post-title">
+            采用LLVM构建语言编译器
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-14
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+千里之行，始于足下
+
+整体逻辑
+Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
+生成LLVM IR
+之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。
+具体流程如下:
+首先在AST的子类中..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
     <a href="/2020/03/13/LLVM编译器框架介绍/">
         <h2 class="post-title">
             LLVM编译器框架介绍
@@ -423,37 +455,6 @@ struct ListNode &#123;    int v..
 <hr>
  
 
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/07/回归/">
-        <h2 class="post-title">
-            回归
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-07
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-&quot;只要我决心成功，失败就不会将我击倒。&quot;
-
-宣告回归Blog！
-迈出第一步！
-先放个鸡血视频！
-
-
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
 
 
 <!-- 翻页 pager -->
@@ -545,18 +546,18 @@ struct ListNode &#123;    int v..
                 <div class="tags">
                     
                     
-                    <a href="http://lucyyang719.com/Tags/#读书" title="读书"
-                       rel="2">读书</a>
-                    
-                    
-                    
                     <a href="http://lucyyang719.com/Tags/#总结" title="总结"
                        rel="1">总结</a>
                     
                     
                     
+                    <a href="http://lucyyang719.com/Tags/#读书" title="读书"
+                       rel="2">读书</a>
+                    
+                    
+                    
                     <a href="http://lucyyang719.com/Tags/#算法" title="算法"
-                       rel="10">算法</a>
+                       rel="11">算法</a>
                     
                     
                     

@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <title>
         
-        1031.Maximum Sum of Two Non-Overlapping Subarrays｜Lucyyang&#39;s blog
+        专题: 二分搜索总结｜Lucyyang&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://lucyyang719.com/2020/03/29/1031-Maximum-Sum-of-Two-Non-Overlapping-Subarrays/">
+    <link rel="canonical" href="http://lucyyang719.com/2020/03/29/专题-二分搜索/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -192,7 +192,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>1031.Maximum Sum of Two Non-Overlapping Subarrays</h1>
+                    <h1>专题: 二分搜索总结</h1>
                     
                     <span class="meta">
                          作者 Lucyyang
@@ -212,7 +212,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            1031.Maximum Sum of Two Non-Overlapping Subarrays
+            专题: 二分搜索总结
         </span>
     </div>
 </header>
@@ -223,27 +223,31 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>一道比较有趣的求子序列和的题，<a href="https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/" target="_blank" rel="external">LC1031</a>，自己只相处了O(N^2)的做法，但实际上可以优化到O(N)的时间复杂度。</p>
-<p>题目：给定一个非负的数组A，给定两个子串长度分别为L和M，找到A的不重叠的且和为最大的两个子串。</p>
-<p>方法：类似于贪心的做法，现求出数组A的前缀和，然后我们先考虑位置i，i从L+M到A的末尾：第一种情况是数组M位置在[i-M, i]，更新数组L在[i-M-L, i-M]时的最大值，MaxL=max(MaxL, preSum[i-M]-preSum[i-M-L])；第二种情况我们考虑数组L在[i-L,i]的位置上，更新此时的数组M在[i-M-L,i-L]的最大值，MaxM=max(MaxM, preSum[i-L]-preSum[i-L-L])。那么对于位置i，两个数组的最大和就在原来的结果，第一种的数组和，第二种的数组和这三种情况下进行选择。<strong>这样我们对每个能取到的右端点都进行了考虑，当i到A的末尾时，就为整个数组上的最大子序列和。</strong></p>
-<p><img src="./img1.png" alt="位置i示意图"></p>
+                <p>二分算法主要容易在边界问题上出错，这次先对常见的二分写法进行总结，之后进行题目练习。</p>
+<h2>二分写法总结</h2>
+<h3>lower_bound</h3>
+<p>在有序数组中找到第一个<strong>大于等于</strong>给定值的位置，先看代码：</p>
+<p><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//lower_bound</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> L = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> R = size; <span class="comment">//注意，如果没找到的话，这里返回的是数组的end</span></div><div class="line"></div><div class="line"><span class="keyword">while</span>(L &lt; R) &#123;</div><div class="line">	<span class="keyword">int</span> mid = L + (R-L)/<span class="number">2</span>;</div><div class="line">	<span class="keyword">if</span>(<span class="built_in">array</span>[mid] &gt;= V)</div><div class="line">		R = mid;</div><div class="line">	<span class="keyword">else</span> L = mid+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> L;</div></pre></td></tr></table></figure></p>
+<p>下面做一一解释，R 从size处开始，是为了保证如果没有找到大于等于给定数的话能够返回数组的end。如果R是从size-1开始，如果对于给定的[1,2,3]想找到5的lower_bound，R = 2开始，L会一直加1直到L=R=2，这时返回的结果3明显没有大于等于5，因此R要从数组的末尾+1开始返回。</p>
+<p>L &lt; R表明，我们要找的区间是[L, R]，当L=R时，循环停止在我们要找的数上。</p>
+<p>判断条件中array[mid] &gt;= V表示，当条件大于等于V时，数组mid右边的数一定是大于V的，数组mid左边的数(包含mid本身)才有可能是V的下边界，因此R = mid。注意R不等于mid-1是因为，在判断条件中，如果array[mid] = V，则R=mid可以正好取到。</p>
+<p>对于else分支，既array[mid] &lt; V，则mid左边的数都小于V，因此L=mid+1。</p>
+<p>最后循环停止条件是L=R&gt;=V，返回L和R中任意一个即可。</p>
+<h3>upper_bound</h3>
+<p>在有序数组找到第一个<strong>大于</strong>给定值的位置。</p>
 <p>代码:
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSumTwoNoOverlap</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> L, <span class="keyword">int</span> M)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(A.size() &lt; L+M)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; preSum = A;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; A.size(); i++) &#123;</div><div class="line">            preSum[i] += preSum[i<span class="number">-1</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> res = preSum[L+M<span class="number">-1</span>];</div><div class="line">        <span class="keyword">int</span> maxL = preSum[L<span class="number">-1</span>];</div><div class="line">        <span class="keyword">int</span> maxM = preSum[M<span class="number">-1</span>];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = L+M; i &lt; A.size(); i++) &#123;</div><div class="line">            maxL = max(maxL, preSum[i-M] - preSum[i-M-L]);</div><div class="line">            maxM = max(maxM, preSum[i-L]-preSum[i-M-L]);</div><div class="line">            res = max(res, max(maxL + preSum[i] - preSum[i-M], maxM + preSum[i] - preSum[i-L]));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="comment">//upper_bound</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> L = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> R = size; <span class="comment">//注意，如果没找到的话，这里返回的是数组的end</span></div><div class="line"></div><div class="line"><span class="keyword">while</span>(L &lt; R) &#123;</div><div class="line">	<span class="keyword">int</span> mid = L + (R-L)/<span class="number">2</span>;</div><div class="line">	<span class="keyword">if</span>(<span class="built_in">array</span>[mid] &gt; V) <span class="comment">//注意判断upper_bound的判断条件为&gt;V</span></div><div class="line">		R = mid;</div><div class="line">	<span class="keyword">else</span> L = mid+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> L;</div></pre></td></tr></table></figure></p>
+<p>upper_bound的写法和lower_bound基本相似，但由于upper_bound判断的是&gt;V的数，因此相应的判断条件也为array[mid] &gt; V，R=mid的原因是，此时的mid有可能是第一个大于V的数，因此应该取上。</p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2020/03/29/专题-二分搜索/" data-toggle="tooltip" data-placement="top"
-                           title="专题: 二分搜索总结">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2020/03/29/LeetCode周赛182/" data-toggle="tooltip" data-placement="top"
-                           title="LeetCode周赛182">Next Post &rarr;</a>
+                        <a href="/2020/03/29/1031-Maximum-Sum-of-Two-Non-Overlapping-Subarrays/" data-toggle="tooltip" data-placement="top"
+                           title="1031.Maximum Sum of Two Non-Overlapping Subarrays">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -278,7 +282,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">二分写法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">lower_bound</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">upper_bound</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
