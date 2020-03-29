@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <title>
         
-        LeetCode周赛182｜Lucyyang&#39;s blog
+        1031.Maximum Sum of Two Non-Overlapping Subarrays｜Lucyyang&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://lucyyang719.com/2020/03/29/LeetCode周赛182/">
+    <link rel="canonical" href="http://lucyyang719.com/2020/03/29/1031-Maximum-Sum-of-Two-Non-Overlapping-Subarrays/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -192,7 +192,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>LeetCode周赛182</h1>
+                    <h1>1031.Maximum Sum of Two Non-Overlapping Subarrays</h1>
                     
                     <span class="meta">
                          作者 Lucyyang
@@ -212,7 +212,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            LeetCode周赛182
+            1031.Maximum Sum of Two Non-Overlapping Subarrays
         </span>
     </div>
 </header>
@@ -223,142 +223,22 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>今天的比赛打的还不错哦，虽然第三题在整除问题上WA了一发，但整体过程还是蛮顺利的！希望下次比赛也能顺顺利利做完第三题！</p>
-<h2>Find Lucky Integer in an Array</h2>
-<p>题目：<a href="https://leetcode.com/problems/find-lucky-integer-in-an-array/" target="_blank" rel="external">LC1294</a>，找到出现次数和值相同的数。</p>
-<p>方法：用了一个map统计出现次数，然后从最大值开始遍历，返回第一个相等的值。</p>
-<p>代码：
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; m;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findLucky</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; arr)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> a:arr)&#123;</div><div class="line">            m[a]++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">-1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">500</span>; i&gt;=<span class="number">0</span>; i--)&#123;</div><div class="line">            <span class="keyword">if</span>(m.find(i)!=m.end())&#123;</div><div class="line">                <span class="keyword">if</span>(m[i] == i) &#123;</div><div class="line">                    ans = i;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h2>Count Number of Teams</h2>
-<p>题目：<a href="https://leetcode.com/problems/count-number-of-teams/" target="_blank" rel="external">LC1395</a>，找到数组中递增或递减的三个数。</p>
-<p>方法：比赛的时候直接写的O(N<sup>3)做法，幸好给的数据范围小过了。O(N</sup>2)的做法是对从nums[1:size-2]的数统计larger[left],larger[right],smaller[left]和smaller[right]，对于单个数可以组成的个数为larger[left]*smaller[right]+larger[right]*smaller[left]。</p>
-<p>代码：
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">numTeams</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; rating)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">1</span>; i &lt; rating.size() - <span class="number">1</span>; ++i) &#123;</div><div class="line">        <span class="keyword">int</span> less[<span class="number">2</span>] = &#123;&#125;, greater[<span class="number">2</span>] = &#123;&#125;;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> j = <span class="number">0</span>; j &lt; rating.size(); ++j) &#123;</div><div class="line">            <span class="keyword">if</span> (rating[i] &lt; rating[j])</div><div class="line">                ++less[j &gt; i];</div><div class="line">            <span class="keyword">if</span> (rating[i] &gt; rating[j])</div><div class="line">                ++greater[j &gt; i];</div><div class="line">        &#125;</div><div class="line">        res += less[<span class="number">0</span>] * greater[<span class="number">1</span>] + greater[<span class="number">0</span>] * less[<span class="number">1</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2>Design Underground System</h2>
-<p>题目：<a href="https://leetcode.com/problems/design-underground-system/" target="_blank" rel="external">LC1396</a>，一道设计题。题目大意是记录下游客从station1出发到station2的时间，最后会求出所有旅客从station1到station2所用平均时间。</p>
-<p>方法：我用了一个map1来求从station1到station2的总共时间，一个map2用来记录从station1到station2的人数；当有新的旅客checkin时，用一个hash table记录下id,checkin信息，当checkout的时候，计算出相关信息加入到map1和map2中，再删去checkin中的信息。比赛中WA了一次，因为最后返回time时用的int/int，结果自动取整了，后面加了个double。</p>
-<p>代码：
-<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UndergroundSystem</span> &#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="built_in">map</span>&lt;pair&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;, <span class="keyword">long</span> <span class="keyword">long</span>&gt; averTime;</div><div class="line">    <span class="built_in">map</span>&lt;pair&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;, <span class="keyword">int</span>&gt; totalInt;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, pair&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;&gt; checkin;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    UndergroundSystem() &#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checkIn</span><span class="params">(<span class="keyword">int</span> id, <span class="built_in">string</span> stationName, <span class="keyword">int</span> t)</span> </span>&#123;</div><div class="line">        checkin[id] = &#123;stationName, t&#125;;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checkOut</span><span class="params">(<span class="keyword">int</span> id, <span class="built_in">string</span> stationName, <span class="keyword">int</span> t)</span> </span>&#123;</div><div class="line">        <span class="keyword">auto</span> checkin_status = checkin[id];</div><div class="line">        <span class="keyword">int</span> checkintime = checkin_status.second;</div><div class="line">        <span class="built_in">string</span> stationStart = checkin_status.first;</div><div class="line">        checkin.erase(id);</div><div class="line">        <span class="keyword">auto</span> stationstr = make_pair(stationStart, stationName);</div><div class="line">        averTime[stationstr]+=(t - checkintime);</div><div class="line">        totalInt[stationstr]++;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getAverageTime</span><span class="params">(<span class="built_in">string</span> startStation, <span class="built_in">string</span> endStation)</span> </span>&#123;</div><div class="line">        <span class="keyword">auto</span> stationstr = make_pair(startStation, endStation);</div><div class="line">        <span class="keyword">double</span> time = (<span class="keyword">double</span>)averTime[stationstr]/totalInt[stationstr];</div><div class="line">        <span class="keyword">return</span>  time;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Your UndergroundSystem object will be instantiated and called as such:</span></div><div class="line"><span class="comment"> * UndergroundSystem* obj = new UndergroundSystem();</span></div><div class="line"><span class="comment"> * obj-&gt;checkIn(id,stationName,t);</span></div><div class="line"><span class="comment"> * obj-&gt;checkOut(id,stationName,t);</span></div><div class="line"><span class="comment"> * double param_3 = obj-&gt;getAverageTime(startStation,endStation);</span></div><div class="line"><span class="comment"> */</span></div></pre></td></tr></table></figure></p>
-<p>这次比赛题目还是比较简单的，再接再厉！</p>
-<p><div id="echarts8186" style="width: 85%;height: 400px;margin: 0 auto"></div>
-<script src="https://cdn.bootcss.com/echarts/3.8.0/echarts.common.min.js"></script>
-<script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts8186'));
-        // 指定图表的配置项和数据
-        var option = {
-    title: {
-        text: "Leetcode周赛排名",
-        subtext: ""
-    },
-    tooltip: {
-        trigger: "axis"
-    },
-    legend: {
-        data: ["比赛排名"]
-    },
-    toolbox: {
-        show: false,
-        feature: {
-            dataView: {
-                readOnly: true
-            },
-            magicType: {
-                type: ["line", "bar"],
-                show: false
-            }
-        }
-    },
-    calculable: true,
-    xAxis: [
-        {
-            type: "category",
-            boundaryGap: false,
-            data: ["180", "181", "182"],
-            name: "轮次",
-            nameLocation: "end",
-            nameTextStyle: {
-                color: "rgb(0, 0, 0)"
-            },
-            axisLine: {
-                lineStyle: {
-                    color: "#48b",
-                    width: 2
-                }
-            },
-            axisLabel: {
-                textStyle: {
-                    color: "rgb(0, 0, 0)"
-                }
-            }
-        }
-    ],
-    yAxis: [
-        {
-            type: "value",
-            name: "排名",
-            nameLocation: "end",
-            min: 1500,
-            max: 1600,
-            nameTextStyle: {
-                color: "rgb(0, 0, 0)",
-                fontSize: 12
-            },
-            axisLine: {
-                lineStyle: {
-                    color: "#48b",
-                    width: 2
-                }
-            },
-            axisLabel: {
-                textStyle: {
-                    color: "rgb(0, 0, 0)"
-                }
-            }
-        }
-    ],
-    series: [
-        {
-            name: "比赛排名",
-            type: "line",
-            data: [1563, 1551, 1551],
-            itemStyle: {
-                normal: {
-                    lineStyle: {
-                        color: "rgb(255, 86, 86)",
-                        width: 2
-                    }
-                }
-            }
-        }
-    ],
-    grid: {
-        x: 80,
-        y: 60,
-        x2: 80,
-        y2: 60,
-        width: 400,
-        height: 200
-    }
-};
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-</script></p>
+                <p>一道比较有趣的求子序列和的题，<a href="https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/" target="_blank" rel="external">LC1031</a>，自己只相处了O(N^2)的做法，但实际上可以优化到O(N)的时间复杂度。</p>
+<p>题目：给定一个非负的数组A，给定两个子串长度分别为L和M，找到A的不重叠的且和为最大的这两个子串。</p>
+<p>方法：类似于贪心的做法，现求出数组A的前缀和，然后我们先考虑位置i，i从L+M到A的末尾：第一种情况是数组M位置在[i-M, i]，更新数组L在[i-M-L, i-M]时的最大值，MaxL=max(MaxL, preSum[i-M]-preSum[i-M-L])；第二种情况我们考虑数组L在[i-L,i]的位置上，更新此时的数组M在[i-M-L,i-L]的最大值，MaxM=max(MaxM, preSum[i-L]-preSum[i-L-L])。那么对于位置i，两个数组的最大和就在原来的结果，第一种的数组和，第二种的数组和这三种情况下进行选择。这样我们对每个能取到的右端点都进行了考虑，当i到A的末尾时，就为整个数组上的最大子序列和。</p>
+<p><img src="./img1.png" alt="位置i示意图"></p>
+<p>代码:
+<figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSumTwoNoOverlap</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> L, <span class="keyword">int</span> M)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(A.size() &lt; L+M)</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; preSum = A;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; A.size(); i++) &#123;</div><div class="line">            preSum[i] += preSum[i<span class="number">-1</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> res = preSum[L+M<span class="number">-1</span>];</div><div class="line">        <span class="keyword">int</span> maxL = preSum[L<span class="number">-1</span>];</div><div class="line">        <span class="keyword">int</span> maxM = preSum[M<span class="number">-1</span>];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = L+M; i &lt; A.size(); i++) &#123;</div><div class="line">            maxL = max(maxL, preSum[i-M] - preSum[i-M-L]);</div><div class="line">            maxM = max(maxM, preSum[i-L]-preSum[i-M-L]);</div><div class="line">            res = max(res, max(maxL + preSum[i] - preSum[i-M], maxM + preSum[i] - preSum[i-L]));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2020/03/29/1031-Maximum-Sum-of-Two-Non-Overlapping-Subarrays/" data-toggle="tooltip" data-placement="top"
-                           title="1031.Maximum Sum of Two Non-Overlapping Subarrays">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2020/03/25/书单预定/" data-toggle="tooltip" data-placement="top"
-                           title="书单预定">Next Post &rarr;</a>
+                        <a href="/2020/03/29/LeetCode周赛182/" data-toggle="tooltip" data-placement="top"
+                           title="LeetCode周赛182">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -393,7 +273,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Find Lucky Integer in an Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Count Number of Teams</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Design Underground System</span></a></li></ol>
+                    
                 </div>
             </div>
         </div>
