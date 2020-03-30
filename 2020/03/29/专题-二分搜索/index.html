@@ -84,25 +84,15 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
-                        </li>
-							
-						
-                    
-                        
-							
-                        <li>
                             <a href="/About/">About</a>
                         </li>
 							
 						
                     
                         
-                    
-                        
 							
                         <li>
-                            <a href="/Talks/">Talks</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -114,6 +104,16 @@
                         </li>
 							
 						
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
+                        </li>
+							
+						
+                    
+                        
                     
 					
 					
@@ -247,8 +247,7 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> r = nums.size();</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</div><div class="line">            <span class="keyword">int</span> mid = l + (r-l)/<span class="number">2</span>;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"l=%d, r=%d, nums[%d]=%d\n"</span>,l,r,mid,nums[mid]);</div><div class="line">            <span class="keyword">if</span>(nums[mid] &lt; nums[<span class="number">0</span>])</div><div class="line">                r = mid;</div><div class="line">            <span class="keyword">else</span> l = mid+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(r==nums.size()) r=<span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> nums[r];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <h3>Search in Rotated Sorted Array</h3>
 <p>题目：<a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="external">LC33</a>，原数组为增序，经过一次旋转后，请在O(logN)的时间复杂度下求出给定的target的位置。</p>
-<p>方法：采用二分数组的关键是针对有序数组，针对这道题，先参考求旋转点的方法，求出旋转点。</p>
-<p>在求得了旋转点后，可以将数组分为增序的两端，如果所求值大于等于nums[0]，则必在左半段，否则就在右半段。可以根据这个选择有序数组并进行二分查找。<strong>注意最后要确认下target == nums[r]</strong>。如果在左半段但没有这个数时，r会停在左半段的end处，既旋转点上。
+<p>方法：采用二分数组的关键是针对有序数组，针对这道题，先参考求旋转点的方法，求出旋转点。在求得了旋转点后，可以将数组分为增序的两端，如果所求值大于等于nums[0]，则必在左半段，否则就在右半段。可以根据这个选择有序数组并进行二分查找。<strong>注意最后要确认下target == nums[r]</strong>。如果在左半段但没有这个数时，r会停在左半段的end处，既旋转点上。
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> r = nums.size();</div><div class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</div><div class="line">            <span class="keyword">int</span> mid = l + (r-l)/<span class="number">2</span>;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"l=%d, r=%d, nums[%d]=%d\n"</span>,l,r,mid,nums[mid]);</div><div class="line">            <span class="keyword">if</span>(nums[mid] &lt; nums[<span class="number">0</span>])</div><div class="line">                r = mid;</div><div class="line">            <span class="keyword">else</span> l = mid+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//判断在哪个区间</span></div><div class="line">        <span class="keyword">if</span>(target &gt;= nums[<span class="number">0</span>])&#123;</div><div class="line">            l = <span class="number">0</span>;</div><div class="line">            r = r;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            l = r;</div><div class="line">            r = nums.size();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//在对应区间找target</span></div><div class="line">        <span class="keyword">while</span>(l &lt; r)&#123;</div><div class="line">            <span class="keyword">int</span> mid = l + (r-l)/<span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(nums[mid]&gt;=target)</div><div class="line">                r = mid;</div><div class="line">            <span class="keyword">else</span> l = mid+<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//确认nums[r]是target，有可能停在旋转点上但不相等或者停在end处</span></div><div class="line">        <span class="keyword">if</span>(r!=nums.size() &amp;&amp; nums[r]==target)</div><div class="line">            <span class="keyword">return</span> r;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>方法二：在二分的时候判断mid和left的相对位置，可以先划分为两种情况:一种是mid和left都在左右区间，这时nums[mid] &gt;= nums[left]；一种是left在左区间，mid在右区间，nums[mid] &lt; nums[left]。对于第一种情况，又可分为target在[left, mid)的区间和不在的两种情况。
 如果在[left, mid)区间(之前已经排除了nums[mid] = target情况)，则必有 nums[left] &lt;= target &lt; nums[mid],此时将right缩小到mid-1;如果不在[left, mid)区间，则必在(mid, right]区间，此时left = mid +1。 再讨论nums[mid] &lt; nums[left]的情况，既mid在旋转点的右边，left在旋转点的左边。此时(mid, right]为增序区间，判断target是否在该区间，如果在则left=mid+1；否则right = mid-1。</p>
@@ -258,6 +257,11 @@
                 
 
                 <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/03/31/QuickSort-and-QuickSelect/" data-toggle="tooltip" data-placement="top"
+                           title="QuickSort and QuickSelect">&larr; Previous Post</a>
+                    </li>
                     
                     
                     <li class="next">
