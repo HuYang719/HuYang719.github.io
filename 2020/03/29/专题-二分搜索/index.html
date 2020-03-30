@@ -240,7 +240,7 @@
 <p>upper_bound的写法和lower_bound基本相似，但由于upper_bound判断的是&gt;V的数，因此相应的判断条件也为array[mid] &gt; V，R=mid的原因是，此时的mid有可能是第一个大于V的数，因此应该取上。</p>
 <h2>二分搜索相关题目</h2>
 <p>下面就选取一些经典的题目进行辅助理解。</p>
-<h2>Find Minimum in Rotated Sorted Array</h2>
+<h3>Find Minimum in Rotated Sorted Array</h3>
 <p>题目：<a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="external">LC153</a>，找到旋转数组中最小的数，也可以认为是旋转点，注意数组也有可能没有旋转，既nums[0]是最小的。</p>
 <p>方法：由于这道题没有重复数字，我们可以将问题转换为第一个比nums[0]小的数。如果数组并没有旋转，那么就无法找到比nums[0]小的数，r会停留在nums.size()。</p>
 <p>代码：
@@ -297,7 +297,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">二分写法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">lower_bound</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">upper_bound</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">二分搜索相关题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Find Minimum in Rotated Sorted Array</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Search in Rotated Sorted Array</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">二分写法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">lower_bound</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">upper_bound</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">二分搜索相关题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Find Minimum in Rotated Sorted Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">Search in Rotated Sorted Array</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
