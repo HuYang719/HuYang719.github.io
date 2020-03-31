@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lucyyang在 Github 上的个人博客">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="http://lucyyang719.com/img/saberQ4.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Lucyyang" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <title>
+        
+        字节跳动AI Lab面试经过｜Lucyyang&#39;s blog
+        
+    </title>
+
+    <link rel="canonical" href="http://lucyyang719.com/2020/03/31/字节跳动AI-Lab面试经过/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Lucyyang
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/About/">About</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Tags/">Tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
+                        </li>
+							
+						
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="http://lucyyang719.com/img/banner.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('http://lucyyang719.com/img/banner.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      <!--$表示行内元素，$$表示块状元素 -->
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<!--加载MathJax的最新文件， async表示异步加载进来 -->
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>字节跳动AI Lab面试经过</h1>
+                    
+                    <span class="meta">
+                         作者 Lucyyang
+                        <span>
+                          日期 2020-03-31
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#CS"
+                           title="CS">CS</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            字节跳动AI Lab面试经过
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <p>由于决定去读博士，所以大学这么几年并没有参与多少公司的面试，加上最近的一次一共只有三次实习生的面试。如果之后真的去读博的话，我还会很希望能去做几段不错的实习。作为一个<s>可可爱爱</s>又很能bb项目的妹子(好像只要不涉及coding的面试都发挥很好)，阻拦我和tech公司之间的就只有手撕算法题目啦QAQ。</p>
+<p>尤其是2019年的2月，参加完Google AI Winter Camp，肝了四天和队友拿下了Best Project，拿到了只需一轮的电话面试机会，结果没准备好一紧张就直接送了人头，而我的队友们都顺顺利利进入实习去吃GG的美食了QAQ。虽然后面一直安慰自己，我是EE出身，他们是CS出身，自己这样已经很不容易啦之类的，但是无奈人家公司不看你的出身背景啊orz。Anyway，只能决心努力补上差距了，不然以后都没法实习赚小钱钱玩了！</p>
+<p>那么再说一说最近一次(3月20日)的字节跳动AI Lab的面试经过，由于是实习生面试，一共只有两轮，每次大约45min。先说下最后的结果：最后一位面试官在我面试完和我说想给我转到FPGA方面，因为他们组主要搞GPU，不过也是一个大组的，统属于AL Lab System组。当时我觉得可能是我面试表现太菜了叭不想要我，回去抱着昂一顿哭诉。不过3月26日HR给我打电话说我通过了前两轮的技术面试进行了HR面，然后到了晚上又一个HR给我打电话，说面试官想要给我转FPGA方面，然后希望重新再面2轮，所以下次面试就是4月7日啦！好吧，就当是去积累经验啦。</p>
+<h2>第一轮面试</h2>
+<p>第一轮面试感觉形式有点点奇怪，上来先让我自我介绍了下，接着聊了下我印象最深刻的项目，我给他稍微吐槽了下研究生期间的做的东西。大约花了10-15min左右。接着开始出题了：</p>
+<p>假如每个字母代表一个8bit的信息，我想要传a-z26组信息，但是不直接传信息，而是传递经过随机编码的信息，例如{a, a^b, x<sup>y</sup>z...}。那么1.什么情况下是有解的？2.如果转换为矩阵的形式，复杂度为多少？</p>
+<p>一眼看到这题有点傻，怎么和我想象的coding不太一样啊，不过面试官很好，非常耐心的引导我思考。他首先给我举了只有abc的情况(<strong>注意以后自己分析问题也要从最简单的例子开始</strong>)，假如我们传输的情况是{a, b, c}，那么就一定有解；如果传{a, a^b, a<sup>b</sup>c}也有解。这个时候我想到了是类似高斯消元的做法：将传输的信息写成矩阵形式，然后根据高斯消元的方法化简到上三角，然后最后每一行都对应的一个接。如果矩阵的秩小于26，此时我们无法求解全部信息。<a href="https://www.zhihu.com/question/21605094" target="_blank" rel="external">一个帮助理解矩阵的秩的知乎回答</a></p>
+<p>接着我们开始分析求解这个矩阵的复杂度，面试官降这个步骤划分为两步，第一步是将矩阵划为上三角的形式，第二步是在上三角的基础上求解最终答案。我们先分析的是第二步的复杂度，对于最坏情况(第一行全为1)，假设我们其他行都已求出了结果，那么该行需要和其他所有行都进行求和，该行的计算复杂度为O(N)，N代表行数，既传递的元祖个数。那么一共要求解N行，所以第二步的时间复杂度上限是O(N^2)。</p>
+<p>接着分析第一步的复杂度，面试的时候由于时间关系，只分析到了这一步。</p>
+<p><a href="https://en.wikipedia.org/wiki/Gaussian_elimination" target="_blank" rel="external">高斯消元算法介绍</a></p>
+<h2>第二轮面试</h2>
+<p>第二个面试官先问了下我最近在学什么，我给他稍微bb了下LLVM，然后他好像不是很了解这个，就直接上来做题了。</p>
+<p>题目：有一组螺丝和螺母，螺丝相互之间不能比较大小，螺母相互之间也不能比较大小。但螺丝和螺母之间可以比较，即我们可以拿任意一个螺丝和螺母进行匹配，然后有大了/小了/正好三种可能，每个螺丝只有唯一匹配的螺母。请返回每个螺丝对应的螺母。</p>
+<p>先和面试官讨论了下，这道题可以先拿出一个螺母，然后根据这个螺母把螺丝分成两部分，而这个螺母对应的螺丝也可以将螺母分成两部分，不听做下去，就能解决这个排列问题了。整个过程就很是QuickSort，不过面试的时候出了点问题，没有写完代码。感觉面试时候只能发挥60%写代码的能力，如果平时有地方有点疑惑没搞懂，那面试遇到这个问题是一定会挂。哎，还是得加强平时的练习，下面是我后面补上的解法，以供参考。</p>
+<p><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">vec_print</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; L)</span></span>&#123;</div><div class="line">     <span class="keyword">for</span>(<span class="keyword">auto</span> i:L)&#123;</div><div class="line">          <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LS, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LM, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">     <span class="keyword">int</span> pivot = LM[right];</div><div class="line">     <span class="keyword">int</span> pos = left;</div><div class="line">     <span class="keyword">int</span> LS_pivot_pos = <span class="number">0</span>;</div><div class="line">     <span class="comment">// 根据螺母处理螺丝的情况</span></div><div class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i = left; i &lt;= right; i++)&#123;</div><div class="line">          <span class="keyword">if</span>(LS[i] &lt; pivot)&#123;</div><div class="line">               swap(LS[i], LS[pos]);</div><div class="line">               pos++;</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">if</span>(LS[i] == pivot) <span class="comment">// 必须放在swap的后面，这样才能保证获得经过交换后的LS中pivot的位置</span></div><div class="line">               LS_pivot_pos = i;</div><div class="line">     &#125;</div><div class="line">     swap(LS[LS_pivot_pos],LS[pos]);</div><div class="line">     LS_pivot_pos = pos;</div><div class="line"></div><div class="line">     <span class="comment">//根据螺丝处理螺母的情况</span></div><div class="line">     pivot = LS[LS_pivot_pos];</div><div class="line">     pos = left;</div><div class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i = left; i &lt;= right; i++)&#123;</div><div class="line">          <span class="keyword">if</span>(LM[i] &lt;= pivot) &#123; <span class="comment">// 由于pivot是LM最后一个，因此会直接swap到分界点</span></div><div class="line">               swap(LM[i],LM[pos]);</div><div class="line">               pos++;</div><div class="line">          &#125;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="comment">//螺丝和螺母的pivot停在的相对位置是一样的</span></div><div class="line">     <span class="keyword">return</span> LS_pivot_pos;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LS, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LM, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">     <span class="keyword">if</span>(left &lt; right)&#123; <span class="comment">//注意判断啊</span></div><div class="line">          <span class="keyword">int</span> pi = partition(LS, LM, left, right);</div><div class="line">          quicksort(LS, LM, left, pi<span class="number">-1</span>);</div><div class="line">          quicksort(LS, LM, pi+<span class="number">1</span>, right);</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">     <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; LS = &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</div><div class="line">     <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; LM = &#123;<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">9</span>&#125;;</div><div class="line">     <span class="keyword">int</span> left = <span class="number">0</span>;</div><div class="line">     <span class="keyword">int</span> right = LS.size()<span class="number">-1</span>;</div><div class="line">     quicksort(LS, LM, left, right);</div><div class="line">     vec_print(LS);</div><div class="line">     <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">     vec_print(LM);</div><div class="line">     <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2>HR面试</h2>
+<p>感觉这两轮面的都不是很好，但是很意外接到了HR面试，自己也很惊讶。主要问了下我的实验室情况，性格，印象最深刻的事情，身边的同学去了哪里，多久能入职，是偏好工程还是研究之类的，大约表现出比较想去我很坚强能扛得住打击的样子就好了吧。</p>
+<h2>TimeLine</h2>
+<p>3月14日： 投递</p>
+<p>3月17日： HR约面试 (注意没准备好其实可以推)</p>
+<p>3月20日： 面试</p>
+<p>3月26日： HR面试</p>
+<p>3月26日： 约了4月7日的面试</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/03/31/QuickSort-and-QuickSelect/" data-toggle="tooltip" data-placement="top"
+                           title="QuickSort and QuickSelect">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+                <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDA0OS82NjEz">
+                    <script type="text/javascript">
+                       (function(d, s) {
+                           var j, e = d.getElementsByTagName(s)[0];
+
+                           if (typeof LivereTower === 'function') { return; }
+
+                           j = d.createElement(s);
+                           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                           j.async = true;
+
+                           e.parentNode.insertBefore(j, e);
+                       })(document, 'script');
+                    </script>
+                    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+<!-- City版安装代码已完成 -->
+                
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第一轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第二轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">HR面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">TimeLine</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#CS"
+                           title="CS">CS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <div style="margin-top: 20px;">
+                    <h5 class="text-center">FRIENDS</h5>
+                    <ul class="list-inline text-center">
+                        
+                        <li><a href="http://blog.nebula.moe/">nebula</a></li>
+                        
+                        <li><a href="http://chengpeng.space/">ChengPeng</a></li>
+                        
+                        <li><a href="https://ring0.me/">boj</a></li>
+                        
+                        <li><a href="https://sd-invol.github.io">轩</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                
+                <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+                
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Lucyyang 2020
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                   
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://lucyyang719.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-104173686-1';
+    var _gaDomain = 'lucyyang719.com';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '8d7d181e1a570aab168b4b03341e12d1';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://lucyyang719.com/img/saberQ2.jpg"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>
