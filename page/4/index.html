@@ -84,7 +84,7 @@
                         
 							
                         <li>
-                            <a href="/About/">About</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -92,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
+                            <a href="/About/">About</a>
                         </li>
 							
 						
@@ -318,6 +318,89 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/14/采用LLVM构建语言编译器/">
+        <h2 class="post-title">
+            采用LLVM构建语言编译器
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-14
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+千里之行，始于足下
+
+整体逻辑
+Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
+生成LLVM IR
+之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。
+具体流程如下:
+首先在AST的子类中..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/13/LLVM编译器框架介绍/">
+        <h2 class="post-title">
+            LLVM编译器框架介绍
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                本文摘自LLVM项目的创始者Chris Lattner的介绍：The Architecture of Open Source Applications: LLVM
+什么是LLVM？
+LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的编译器组件和工具链，用来开发编译器前端和后端。它与其..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/13/积分纪录榜/">
+        <h2 class="post-title">
+            积分纪录榜
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
     <a href="/2020/03/12/LRU-Cache-和-LFU-Cache/">
         <h2 class="post-title">
             LRU Cache 和 LFU Cache
@@ -363,93 +446,6 @@ sd0061:&quot;你超级厉害，只要再学会CS的算法和三大项，就无�
 开始重新刷起Leetcode啦，距离上学会有一段比较长的时间，于是这次打算彻彻底底的好好刷题学算法。那么就从链表总结起来吧。
 链表的结构
 struct ListNode &#123;    int v..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/07/回归/">
-        <h2 class="post-title">
-            回归
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-07
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-&quot;只要我决心成功，失败就不会将我击倒。&quot;
-
-宣告回归Blog！
-迈出第一步！
-先放个鸡血视频！
-
-
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2018/08/08/EM算法原理及其应用-二/">
-        <h2 class="post-title">
-            EM算法原理及其应用-二
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-08
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-No great thing is created suddenly.
-
-在这节当中，我们将(一)中介绍的EM算法应用在高斯混合模型中，本文重点在于引导读者学习如何使用EM算法，对于其中某些推导的细节请查阅伯克利Bilmes教授的tutorial。
-高斯混合分布 (GMM)
-EM算法在计算模式..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2018/08/06/Deep-Learning中的数学-一/">
-        <h2 class="post-title">
-            EM算法原理及其应用-一
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-06
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-It gets easier everyday, but you should do it everyday, that's the hard part.
-
-在最近的学习中，发现EM算法应用非常广泛，不止是在机器学习中，在传统通信的迭代译码、信道估计等问题上都涉及到了EM算法，因此针对EM算法..
             </p>
         </div>
     </a>
@@ -550,11 +546,6 @@ It gets easier everyday, but you should do it everyday, that's the hard part.
                 <div class="tags">
                     
                     
-                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
-                       rel="1">总结</a>
-                    
-                    
-                    
                     <a href="http://lucyyang719.com/Tags/#生活" title="生活"
                        rel="1">生活</a>
                     
@@ -562,6 +553,11 @@ It gets easier everyday, but you should do it everyday, that's the hard part.
                     
                     <a href="http://lucyyang719.com/Tags/#读书" title="读书"
                        rel="2">读书</a>
+                    
+                    
+                    
+                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
+                       rel="1">总结</a>
                     
                     
                     
@@ -575,13 +571,13 @@ It gets easier everyday, but you should do it everyday, that's the hard part.
                     
                     
                     
+                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
+                       rel="5">CS</a>
+                    
+                    
+                    
                     <a href="http://lucyyang719.com/Tags/#数学" title="数学"
                        rel="2">数学</a>
-                    
-                    
-                    
-                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
-                       rel="3">CS</a>
                     
                     
                     

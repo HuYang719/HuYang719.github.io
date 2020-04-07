@@ -84,7 +84,7 @@
                         
 							
                         <li>
-                            <a href="/About/">About</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -92,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
+                            <a href="/About/">About</a>
                         </li>
 							
 						
@@ -318,9 +318,84 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/31/字节跳动AI-Lab面试经过/">
+    <a href="/2020/04/06/字节跳动AI-Lab面试经过/">
         <h2 class="post-title">
             字节跳动AI Lab面试经过
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-06
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                由于决定去读博士，所以大学这么几年并没有参与多少公司的面试，加上最近的一次一共只有三次实习生的面试。如果之后真的去读博的话，我还会很希望能去做几段不错的实习。作为一个可可爱爱又很能bb项目的妹子(好像只要不涉及coding的面试都发挥很好)，阻拦我和tech公司之间的就只有手撕算法题目啦QAQ。..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/04/02/专题-Jump-Game/">
+        <h2 class="post-title">
+            专题: Jump Game
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-02
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/04/02/FPGA基础知识复习/">
+        <h2 class="post-title">
+            FPGA基础知识复习
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-02
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                啊，虽然总是吐槽FPGA难写难调，但毕竟是从FPGA起家的，手艺活还是不能丢！乘此机会复习一下基础概念和常见的面试考点。
+语法基础
+模块描述
+module block(a,b,c,d);input[7:0] a, b;output[7:0] c, d;wire w1, w2;reg[7:0] r..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/31/字节跳动打卡计划题目集合/">
+        <h2 class="post-title">
+            字节跳动打卡计划题目集合
         </h2>
         <p class="post-meta">
             <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-31
@@ -328,7 +403,32 @@
         
         <div class="post-content-preview">
             <p>
-                由于决定去读博士，所以大学这么几年并没有参与多少公司的面试，加上最近的一次一共只有三次实习生的面试。如果之后真的去读博的话，我还会很希望能去做几段不错的实习。作为一个可可爱爱又很能bb项目的妹子(好像只要不涉及coding的面试都发挥很好)，阻拦我和tech公司之间的就只有手撕算法题目啦QAQ。..
+                之前字节跳动搞了个学习打卡计划，一个月内的单数日会放出一道题，基本是往年的笔试题目。因此乘此机会，把这些题都做一做，开阔下思路。
+2月15日
+
+2月17日
+
+2月19日
+
+2月21日
+
+2月23日
+
+2月25日
+
+2月27日
+
+2月29日
+
+3月1日
+
+3月3日
+
+3月5日
+
+3月7日
+
+3月9..
             </p>
         </div>
     </a>
@@ -353,87 +453,6 @@
         <div class="post-content-preview">
             <p>
                 稍微吐个槽，写这个文章的起因是的这样的：我一直以为我是会quicksort的，然后面字节跳动的时候，我也明白面试题目做法要用quicksort。在写partition的时候，面试官打断了我：哎，你这个写法不太对啊？我当时也有点懵，和他解释了我这种做法先把pivot移到最右方便处理，然后不断把比p..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/29/专题-二分搜索/">
-        <h2 class="post-title">
-            专题: 二分搜索总结
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-29
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                二分算法主要容易在边界问题上出错，这次先对常见的二分写法进行总结，之后进行题目练习。
-二分写法总结
-lower_bound
-在有序数组中找到第一个大于等于给定值的位置，先看代码：
-//lower_boundint L = 0;int R = size; //注意，如果没找到的话，这里返回的是数组..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/29/1031-Maximum-Sum-of-Two-Non-Overlapping-Subarrays/">
-        <h2 class="post-title">
-            1031.Maximum Sum of Two Non-Overlapping Subarrays
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-29
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                一道比较有趣的求子序列和的题，LC1031，自己只相处了O(N^2)的做法，但实际上可以优化到O(N)的时间复杂度。
-题目：给定一个非负的数组A，给定两个子串长度分别为L和M，找到A的不重叠的且和为最大的两个子串。
-方法：类似于贪心的做法，现求出数组A的前缀和，然后我们先考虑位置i，i从L+M到..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/29/LeetCode周赛182/">
-        <h2 class="post-title">
-            LeetCode周赛182
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-29
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                今天的比赛打的还不错哦，虽然第三题在整除问题上WA了一发，但整体过程还是蛮顺利的！希望下次比赛也能顺顺利利做完第三题！
-Find Lucky Integer in an Array
-题目：LC1294，找到出现次数和值相同的数。
-方法：用了一个map统计出现次数，然后从最大值开始遍历，返回第一个..
             </p>
         </div>
     </a>
@@ -530,11 +549,6 @@ Find Lucky Integer in an Array
                 <div class="tags">
                     
                     
-                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
-                       rel="1">总结</a>
-                    
-                    
-                    
                     <a href="http://lucyyang719.com/Tags/#生活" title="生活"
                        rel="1">生活</a>
                     
@@ -542,6 +556,11 @@ Find Lucky Integer in an Array
                     
                     <a href="http://lucyyang719.com/Tags/#读书" title="读书"
                        rel="2">读书</a>
+                    
+                    
+                    
+                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
+                       rel="1">总结</a>
                     
                     
                     
@@ -555,13 +574,13 @@ Find Lucky Integer in an Array
                     
                     
                     
+                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
+                       rel="5">CS</a>
+                    
+                    
+                    
                     <a href="http://lucyyang719.com/Tags/#数学" title="数学"
                        rel="2">数学</a>
-                    
-                    
-                    
-                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
-                       rel="3">CS</a>
                     
                     
                     

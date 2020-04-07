@@ -84,7 +84,7 @@
                         
 							
                         <li>
-                            <a href="/About/">About</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -92,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
+                            <a href="/About/">About</a>
                         </li>
 							
 						
@@ -318,6 +318,94 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/23/LeetCode周赛181/">
+        <h2 class="post-title">
+            LeetCode周赛181
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-23
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                昨天打了第181场比赛，居然被第二题坑了半天，扶额叹息，还是要注意复杂度分析啊。此外第三题也算是很常规的题目了，但是稍有些变化，比赛的时候没有做出来，也重点记录下。
+第一题
+题目：LC1389，按照给定的顺序来排列一个array。
+方法：主要使用了vector的insert(pos, val)方..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/17/专题-双指针题目总结/">
+        <h2 class="post-title">
+            专题: 双指针题目总结
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-17
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+“以大多数人的努力程度之低，根本轮不到拼天赋。”
+
+双指针包含的内容比较杂，我主要将其分为快慢指针(在链表一章中介绍)，2sum问题，滑动窗口，二分法(将在二分专题中进行介绍)。
+接雨水问题
+Trapping Rain Water
+首先来一道经典的高频面试题热身。
+题目：LC41给定一个数组，..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/16/专题-二叉树题目总结-二/">
+        <h2 class="post-title">
+            专题: 二叉树题目总结-二
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-16
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+&quot;争取每一天的成功，避免以失败收场。&quot;
+
+树的子结构
+Subtree of Another Tree
+题目：L572，判断一棵树的是否为另一个棵树的子树。
+方法1：我自己的方法是，找到任意一个值相同的根，然后check是否为same tree。将所有与root2-&gt;v..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
     <a href="/2020/03/15/LeetCode周赛180/">
         <h2 class="post-title">
             LeetCode周赛180
@@ -360,89 +448,6 @@
 
 看了学习算法和刷题的思路指南中的第四部分，其实很多比较难一点的算法问题，本质上都是树的问题。好好练习树可以对后面解体有很大的帮助。
 所以，很开心能开始总结二叉树专题啦！因为递归对我来说是薄弱环节，二叉树的一些题目对我还是颇有难度的。从我自己做题的经验，二叉树的题目..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/14/采用LLVM构建语言编译器/">
-        <h2 class="post-title">
-            采用LLVM构建语言编译器
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-14
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-千里之行，始于足下
-
-整体逻辑
-Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
-生成LLVM IR
-之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。
-具体流程如下:
-首先在AST的子类中..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/13/LLVM编译器框架介绍/">
-        <h2 class="post-title">
-            LLVM编译器框架介绍
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                本文摘自LLVM项目的创始者Chris Lattner的介绍：The Architecture of Open Source Applications: LLVM
-什么是LLVM？
-LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的编译器组件和工具链，用来开发编译器前端和后端。它与其..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/13/积分纪录榜/">
-        <h2 class="post-title">
-            积分纪录榜
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-13
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-
             </p>
         </div>
     </a>
@@ -543,11 +548,6 @@ LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的�
                 <div class="tags">
                     
                     
-                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
-                       rel="1">总结</a>
-                    
-                    
-                    
                     <a href="http://lucyyang719.com/Tags/#生活" title="生活"
                        rel="1">生活</a>
                     
@@ -555,6 +555,11 @@ LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的�
                     
                     <a href="http://lucyyang719.com/Tags/#读书" title="读书"
                        rel="2">读书</a>
+                    
+                    
+                    
+                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
+                       rel="1">总结</a>
                     
                     
                     
@@ -568,13 +573,13 @@ LLVM是一种编译器基础设施，以C++写成，包含一系列模块化的�
                     
                     
                     
+                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
+                       rel="5">CS</a>
+                    
+                    
+                    
                     <a href="http://lucyyang719.com/Tags/#数学" title="数学"
                        rel="2">数学</a>
-                    
-                    
-                    
-                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
-                       rel="3">CS</a>
                     
                     
                     

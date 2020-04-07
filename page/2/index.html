@@ -84,7 +84,7 @@
                         
 							
                         <li>
-                            <a href="/About/">About</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -92,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
+                            <a href="/About/">About</a>
                         </li>
 							
 						
@@ -318,6 +318,87 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/29/专题-二分搜索/">
+        <h2 class="post-title">
+            专题: 二分搜索总结
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-29
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                二分算法主要容易在边界问题上出错，这次先对常见的二分写法进行总结，之后进行题目练习。
+二分写法总结
+lower_bound
+在有序数组中找到第一个大于等于给定值的位置，先看代码：
+//lower_boundint L = 0;int R = size; //注意，如果没找到的话，这里返回的是数组..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/29/1031-Maximum-Sum-of-Two-Non-Overlapping-Subarrays/">
+        <h2 class="post-title">
+            1031.Maximum Sum of Two Non-Overlapping Subarrays
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-29
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                一道比较有趣的求子序列和的题，LC1031，自己只相处了O(N^2)的做法，但实际上可以优化到O(N)的时间复杂度。
+题目：给定一个非负的数组A，给定两个子串长度分别为L和M，找到A的不重叠的且和为最大的两个子串。
+方法：类似于贪心的做法，现求出数组A的前缀和，然后我们先考虑位置i，i从L+M到..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/29/LeetCode周赛182/">
+        <h2 class="post-title">
+            LeetCode周赛182
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-29
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                今天的比赛打的还不错哦，虽然第三题在整除问题上WA了一发，但整体过程还是蛮顺利的！希望下次比赛也能顺顺利利做完第三题！
+Find Lucky Integer in an Array
+题目：LC1294，找到出现次数和值相同的数。
+方法：用了一个map统计出现次数，然后从最大值开始遍历，返回第一个..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
     <a href="/2020/03/25/书单预定/">
         <h2 class="post-title">
             书单预定
@@ -360,94 +441,6 @@ We find ourselves in books.
 Just Do It!
 
 一道有趣的二维平面上求连续子区间满足target的题目，可以分解为几个不同的小问题，非常值得学习。先来看下题目LC1074：给定一个矩阵matrix，求有多少个不同的连续子区间的和等于target，注意在二维平面上，连续子区间可以为一维也可以为二维，此外值可以为负数。..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/23/LeetCode周赛181/">
-        <h2 class="post-title">
-            LeetCode周赛181
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-23
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                昨天打了第181场比赛，居然被第二题坑了半天，扶额叹息，还是要注意复杂度分析啊。此外第三题也算是很常规的题目了，但是稍有些变化，比赛的时候没有做出来，也重点记录下。
-第一题
-题目：LC1389，按照给定的顺序来排列一个array。
-方法：主要使用了vector的insert(pos, val)方..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/17/专题-双指针题目总结/">
-        <h2 class="post-title">
-            专题: 双指针题目总结
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-17
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-“以大多数人的努力程度之低，根本轮不到拼天赋。”
-
-双指针包含的内容比较杂，我主要将其分为快慢指针(在链表一章中介绍)，2sum问题，滑动窗口，二分法(将在二分专题中进行介绍)。
-接雨水问题
-Trapping Rain Water
-首先来一道经典的高频面试题热身。
-题目：LC41给定一个数组，..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/16/专题-二叉树题目总结-二/">
-        <h2 class="post-title">
-            专题: 二叉树题目总结-二
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-16
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-&quot;争取每一天的成功，避免以失败收场。&quot;
-
-树的子结构
-Subtree of Another Tree
-题目：L572，判断一棵树的是否为另一个棵树的子树。
-方法1：我自己的方法是，找到任意一个值相同的根，然后check是否为same tree。将所有与root2-&gt;v..
             </p>
         </div>
     </a>
@@ -548,11 +541,6 @@ Subtree of Another Tree
                 <div class="tags">
                     
                     
-                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
-                       rel="1">总结</a>
-                    
-                    
-                    
                     <a href="http://lucyyang719.com/Tags/#生活" title="生活"
                        rel="1">生活</a>
                     
@@ -560,6 +548,11 @@ Subtree of Another Tree
                     
                     <a href="http://lucyyang719.com/Tags/#读书" title="读书"
                        rel="2">读书</a>
+                    
+                    
+                    
+                    <a href="http://lucyyang719.com/Tags/#总结" title="总结"
+                       rel="1">总结</a>
                     
                     
                     
@@ -573,13 +566,13 @@ Subtree of Another Tree
                     
                     
                     
+                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
+                       rel="5">CS</a>
+                    
+                    
+                    
                     <a href="http://lucyyang719.com/Tags/#数学" title="数学"
                        rel="2">数学</a>
-                    
-                    
-                    
-                    <a href="http://lucyyang719.com/Tags/#CS" title="CS"
-                       rel="3">CS</a>
                     
                     
                     

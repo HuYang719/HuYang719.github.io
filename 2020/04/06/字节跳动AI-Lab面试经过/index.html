@@ -22,7 +22,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://lucyyang719.com/2020/03/31/字节跳动AI-Lab面试经过/">
+    <link rel="canonical" href="http://lucyyang719.com/2020/04/06/字节跳动AI-Lab面试经过/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -84,7 +84,7 @@
                         
 							
                         <li>
-                            <a href="/About/">About</a>
+                            <a href="/Archive/">Archive</a>
                         </li>
 							
 						
@@ -92,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
+                            <a href="/About/">About</a>
                         </li>
 							
 						
@@ -197,7 +197,7 @@
                     <span class="meta">
                          作者 Lucyyang
                         <span>
-                          日期 2020-03-31
+                          日期 2020-04-06
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -240,12 +240,24 @@
 <p><figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;  </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">vec_print</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; L)</span></span>&#123;</div><div class="line">     <span class="keyword">for</span>(<span class="keyword">auto</span> i:L)&#123;</div><div class="line">          <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LS, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LM, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">     <span class="keyword">int</span> pivot = LM[right];</div><div class="line">     <span class="keyword">int</span> pos = left;</div><div class="line">     <span class="keyword">int</span> LS_pivot_pos = <span class="number">0</span>;</div><div class="line">     <span class="comment">// 根据螺母处理螺丝的情况</span></div><div class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i = left; i &lt;= right; i++)&#123;</div><div class="line">          <span class="keyword">if</span>(LS[i] &lt; pivot)&#123;</div><div class="line">               swap(LS[i], LS[pos]);</div><div class="line">               pos++;</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">if</span>(LS[i] == pivot) <span class="comment">// 必须放在swap的后面，这样才能保证获得经过交换后的LS中pivot的位置</span></div><div class="line">               LS_pivot_pos = i;</div><div class="line">     &#125;</div><div class="line">     swap(LS[LS_pivot_pos],LS[pos]);</div><div class="line">     LS_pivot_pos = pos;</div><div class="line"></div><div class="line">     <span class="comment">//根据螺丝处理螺母的情况</span></div><div class="line">     pivot = LS[LS_pivot_pos];</div><div class="line">     pos = left;</div><div class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i = left; i &lt;= right; i++)&#123;</div><div class="line">          <span class="keyword">if</span>(LM[i] &lt;= pivot) &#123; <span class="comment">// 由于pivot是LM最后一个，因此会直接swap到分界点</span></div><div class="line">               swap(LM[i],LM[pos]);</div><div class="line">               pos++;</div><div class="line">          &#125;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="comment">//螺丝和螺母的pivot停在的相对位置是一样的</span></div><div class="line">     <span class="keyword">return</span> LS_pivot_pos;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LS, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; LM, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">     <span class="keyword">if</span>(left &lt; right)&#123; <span class="comment">//注意判断啊</span></div><div class="line">          <span class="keyword">int</span> pi = partition(LS, LM, left, right);</div><div class="line">          quicksort(LS, LM, left, pi<span class="number">-1</span>);</div><div class="line">          quicksort(LS, LM, pi+<span class="number">1</span>, right);</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">     <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; LS = &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</div><div class="line">     <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; LM = &#123;<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">9</span>&#125;;</div><div class="line">     <span class="keyword">int</span> left = <span class="number">0</span>;</div><div class="line">     <span class="keyword">int</span> right = LS.size()<span class="number">-1</span>;</div><div class="line">     quicksort(LS, LM, left, right);</div><div class="line">     vec_print(LS);</div><div class="line">     <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">     vec_print(LM);</div><div class="line">     <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2>HR面试</h2>
 <p>感觉这两轮面的都不是很好，但是很意外接到了HR面试，自己也很惊讶。主要问了下我的实验室情况，性格，印象最深刻的事情，身边的同学去了哪里，多久能入职，是偏好工程还是研究之类的，大约表现出比较想去我很坚强能扛得住打击的样子就好了吧。</p>
+<h2>第三轮面试</h2>
+<p>这次面试是4月7日了，因为target的岗位是FPGA加速之类的，所以基本都在问我和FPGA相关的经历。面试官先让我介绍了在微软的实习，然后对我的AES硬件实现比较感兴趣。接着问我是否了解跨时钟域的问题，我和他说了快慢时钟时处理方法，以及FIFO处理还有握手信号。但实际情况中，我好像一直没遇到跨时钟域的问题。放几张之前总结的跨时钟域的问题：</p>
+<p><img src="./pic1.png" alt="快慢时钟1">
+<img src="./pic2.png" alt="快慢时钟2">
+<img src="./pic3.png" alt="快慢时钟3"></p>
+<p>接着面试官又问了我如何用verilog实现一个FIFO，其实我已经很久不写verilog了，感觉有种淡淡的尴尬。然后我就开始和他说有8bit输入信号，8bit输出信号，面试官提示到还有读写信号，然后我又想起来还有full和empty指示信号。接着面试官问我用什么去存储，然后我说register或者memory，面试官表示赞同并说一般用memory。接着问题就转到了如何去实现full和empty指示，面试官和我主要解释了下其实读写是两个指针指向了memory地址，让我根据这个去判断。我最开始脑子一抽，考虑说如果是连续地址，可以直接判断指针指向的地址。我估计面试官听了想打人...，然后他提示我说读写有时候会同步做，然后我想起用cnt去计算，如果是写，就++，读就--。然后这个基本就是正常思路了，面试官又专门给我讲了下具体实现，其实会用5位去表示深度为16的FIFO，这样10000时最高位就是表示为full，我这个时候才记起是有这么个用法，尴尬。不过面试官也认可了我的做法，基本思路还是比较相似的。</p>
+<p>然后基本问题就差不多了，面试官问了下我的兴趣，问了我是否了解FPGA加速AI相关的框架，我尴尬的表示不太了解，<strong>他推荐我去学下NVDLA</strong>，是Nivida推出的比较完善的硬件加速开源框架。然后夸了下我成绩不错，素质挺好的，而且有一些算法上的经验，LSTM，GRU什么的，就是后面要选好自己想走的路。这样今天上午的第一轮面试就差不多了。</p>
+<h2>第四轮面试</h2>
+<p>没想到遇到了从MSRA跳到头条的面试官，之前也是做FPGA在云上的运用，并且还认识我在MSRA的mentor果，颇有点点尴尬啊。面试官还是先聊了我在MSRA的实习，主要考了我NFA和DFA的区别，NFA在软件上实现有什么问题，DFA实现有什么问题。NFA主要是状态不确定，同一个时刻可以有多个状态，DFA问题是状态数量爆炸，这里我有点尴尬了。我最开始说DFA状态太多，然后面试官否定了，然后我就想不太出来了，后来发现是一个意思，唉。</p>
+<p>接着问了我项目的问题，问我是否有有过时序优化的经历，我只能尴尬的表示没有。后面又和他聊了做AES时进行面积优化的问题。第四轮面试时间比较短，只有30min，而且感觉面试官非常平和，话不是很多，但人很聪明，总结的很好。我都没想到我的FPGA的经历可以总结为主要是在安全方面的实现。</p>
+<p>Anyway，感觉MSRA有点下滑啊，人员真的是纷纷外跳，本来做FPGA的也不多，现在感觉基本都是搞CS的人做这个了。</p>
 <h2>TimeLine</h2>
 <p>3月14日： 投递</p>
 <p>3月17日： HR约面试 (注意没准备好其实可以推)</p>
 <p>3月20日： 面试</p>
 <p>3月26日： HR面试</p>
 <p>3月26日： 约了4月7日的面试</p>
+<p>4月07日：两轮线上面试</p>
 
                 <hr>
                 
@@ -254,8 +266,8 @@
                     
                     
                     <li class="next">
-                        <a href="/2020/03/31/QuickSort-and-QuickSelect/" data-toggle="tooltip" data-placement="top"
-                           title="QuickSort and QuickSelect">Next Post &rarr;</a>
+                        <a href="/2020/04/02/专题-Jump-Game/" data-toggle="tooltip" data-placement="top"
+                           title="专题: Jump Game">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -290,7 +302,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第一轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第二轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">HR面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">TimeLine</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第一轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第二轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">HR面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第三轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">第四轮面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">TimeLine</span></a></li></ol>
                 </div>
             </div>
         </div>
