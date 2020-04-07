@@ -100,7 +100,7 @@
                         
 							
                         <li>
-                            <a href="/Tags/">Tags</a>
+                            <a href="/Talks/">Talks</a>
                         </li>
 							
 						
@@ -108,7 +108,7 @@
                         
 							
                         <li>
-                            <a href="/Talks/">Talks</a>
+                            <a href="/Tags/">Tags</a>
                         </li>
 							
 						
@@ -252,11 +252,11 @@
 <p>代码：
 <figure class="highlight cpp"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortedArr;</div><div class="line">    <span class="function">TreeNode* <span class="title">balanceBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        inorderTraverse(root);</div><div class="line">        <span class="keyword">return</span> sortedArrayToBST(<span class="number">0</span>, sortedArr.size() - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">inorderTraverse</span><span class="params">(TreeNode* root)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</div><div class="line">        inorderTraverse(root-&gt;left);</div><div class="line">        sortedArr.push_back(root-&gt;val);</div><div class="line">        inorderTraverse(root-&gt;right);</div><div class="line">    &#125;</div><div class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (start &gt; end) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">        <span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</div><div class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(sortedArr[mid]);</div><div class="line">        root-&gt;left = sortedArrayToBST(start, mid - <span class="number">1</span>);</div><div class="line">        root-&gt;right = sortedArrayToBST(mid + <span class="number">1</span>, end);</div><div class="line">        <span class="keyword">return</span> root;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>Lucyyang下周再接再厉呀！</p>
-<p><div id="echarts1165" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<p><div id="echarts7565" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.bootcss.com/echarts/3.8.0/echarts.common.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts1165'));
+        var myChart = echarts.init(document.getElementById('echarts7565'));
         // 指定图表的配置项和数据
         var option = {
     title: {
