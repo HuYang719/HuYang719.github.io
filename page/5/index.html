@@ -84,14 +84,6 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
-                        </li>
-							
-						
-                    
-                        
-							
-                        <li>
                             <a href="/About/">About</a>
                         </li>
 							
@@ -100,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/Talks/">Talks</a>
+                            <a href="/Tags/">Tags</a>
                         </li>
 							
 						
@@ -108,7 +100,15 @@
                         
 							
                         <li>
-                            <a href="/Tags/">Tags</a>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
                         </li>
 							
 						
@@ -318,6 +318,66 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/15/专题-二叉树题目总结/">
+        <h2 class="post-title">
+            专题: 二叉树题目总结
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-15
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+忘记昨天，也不要痴想明天。
+
+看了学习算法和刷题的思路指南中的第四部分，其实很多比较难一点的算法问题，本质上都是树的问题。好好练习树可以对后面解体有很大的帮助。
+所以，很开心能开始总结二叉树专题啦！因为递归对我来说是薄弱环节，二叉树的一些题目对我还是颇有难度的。从我自己做题的经验，二叉树的题目..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/14/采用LLVM构建语言编译器/">
+        <h2 class="post-title">
+            采用LLVM构建语言编译器
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-14
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+千里之行，始于足下
+
+整体逻辑
+Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
+生成LLVM IR
+之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。
+具体流程如下:
+首先在AST的子类中..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
     <a href="/2020/03/13/LLVM编译器框架介绍/">
         <h2 class="post-title">
             LLVM编译器框架介绍
@@ -385,66 +445,6 @@ Easy choice, hard life; hard choice, easy life.
 总结一下两道缓存器设计题目，分别是LRU Cache和LFU Cache。二者设计既有共同点，也有区别，下面分别进行讨论。
 LRU Cache
 先普及下知识，什么是Least Recently U..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/08/专题-链表题目总结/">
-        <h2 class="post-title">
-            专题: 链表题目总结
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-08
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-sd0061:&quot;你超级厉害，只要再学会CS的算法和三大项，就无敌啦！&quot;
-
-开始重新刷起Leetcode啦，距离上学会有一段比较长的时间，于是这次打算彻彻底底的好好刷题学算法。那么就从链表总结起来吧。
-链表的结构
-struct ListNode &#123;    int v..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/07/回归/">
-        <h2 class="post-title">
-            回归
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-07
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-&quot;只要我决心成功，失败就不会将我击倒。&quot;
-
-宣告回归Blog！
-迈出第一步！
-先放个鸡血视频！
-
-
             </p>
         </div>
     </a>
@@ -551,7 +551,7 @@ struct ListNode &#123;    int v..
                     
                     
                     <a href="http://lucyyang719.com/Tags/#生活" title="生活"
-                       rel="1">生活</a>
+                       rel="2">生活</a>
                     
                     
                     
@@ -638,7 +638,7 @@ struct ListNode &#123;    int v..
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Lucyyang 2020
+                    Copyright &copy; Lucyyang 2021
                     <br>
                     <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
                     <br>

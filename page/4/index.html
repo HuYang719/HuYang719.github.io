@@ -84,14 +84,6 @@
                         
 							
                         <li>
-                            <a href="/Archive/">Archive</a>
-                        </li>
-							
-						
-                    
-                        
-							
-                        <li>
                             <a href="/About/">About</a>
                         </li>
 							
@@ -100,7 +92,7 @@
                         
 							
                         <li>
-                            <a href="/Talks/">Talks</a>
+                            <a href="/Tags/">Tags</a>
                         </li>
 							
 						
@@ -108,7 +100,15 @@
                         
 							
                         <li>
-                            <a href="/Tags/">Tags</a>
+                            <a href="/Archive/">Archive</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/Talks/">Talks</a>
                         </li>
 							
 						
@@ -318,6 +318,60 @@
 
 <div class="post-preview "
      style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/25/Number-of-Submatrices-That-Sum-to-Target/">
+        <h2 class="post-title">
+            1074.Number of Submatrices That Sum to Target
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-25
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+Just Do It!
+
+一道有趣的二维平面上求连续子区间满足target的题目，可以分解为几个不同的小问题，非常值得学习。先来看下题目LC1074：给定一个矩阵matrix，求有多少个不同的连续子区间的和等于target，注意在二维平面上，连续子区间可以为一维也可以为二维，此外值可以为负数。..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
+    <a href="/2020/03/23/LeetCode周赛181/">
+        <h2 class="post-title">
+            LeetCode周赛181
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-23
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                昨天打了第181场比赛，居然被第二题坑了半天，扶额叹息，还是要注意复杂度分析啊。此外第三题也算是很常规的题目了，但是稍有些变化，比赛的时候没有做出来，也重点记录下。
+第一题
+题目：LC1389，按照给定的顺序来排列一个array。
+方法：主要使用了vector的insert(pos, val)方..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+ 
+
+    
+
+<div class="post-preview "
+     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
     <a href="/2020/03/17/专题-双指针题目总结/">
         <h2 class="post-title">
             专题: 双指针题目总结
@@ -393,66 +447,6 @@ Subtree of Another Tree
 第一道题
 矩阵中的幸运数字
 题目：返回一个矩..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/15/专题-二叉树题目总结/">
-        <h2 class="post-title">
-            专题: 二叉树题目总结
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-15
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-忘记昨天，也不要痴想明天。
-
-看了学习算法和刷题的思路指南中的第四部分，其实很多比较难一点的算法问题，本质上都是树的问题。好好练习树可以对后面解体有很大的帮助。
-所以，很开心能开始总结二叉树专题啦！因为递归对我来说是薄弱环节，二叉树的一些题目对我还是颇有难度的。从我自己做题的经验，二叉树的题目..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
- 
-
-    
-
-<div class="post-preview "
-     style="background-image: url('http://lucyyang719.com/img/banner.jpg')">
-    <a href="/2020/03/14/采用LLVM构建语言编译器/">
-        <h2 class="post-title">
-            采用LLVM构建语言编译器
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-14
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                
-千里之行，始于足下
-
-整体逻辑
-Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
-生成LLVM IR
-之前的Parser和AST无需依赖于LLVM的支持，但要生成IR的中间代码，必须从加入LLVM的支持。
-具体流程如下:
-首先在AST的子类中..
             </p>
         </div>
     </a>
@@ -559,7 +553,7 @@ Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
                     
                     
                     <a href="http://lucyyang719.com/Tags/#生活" title="生活"
-                       rel="1">生活</a>
+                       rel="2">生活</a>
                     
                     
                     
@@ -646,7 +640,7 @@ Parser-&gt;AST-&gt;Codegen-&gt;IR 代码-&gt;pass 进行优化
 
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Lucyyang 2020
+                    Copyright &copy; Lucyyang 2021
                     <br>
                     <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
                     <br>
